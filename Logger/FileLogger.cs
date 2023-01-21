@@ -9,7 +9,10 @@ public class FileLogger : BaseLogger
     private string FilePath { get; set; }
 
     /** Constructor. */
-    public FileLogger(string filePath) { FilePath = filePath; }
+    public FileLogger(string filePath)
+    {
+        FilePath = filePath;
+    }
 
     /** Overwritten abstract class. */
     public override void Log(LogLevel logLevel, string message)

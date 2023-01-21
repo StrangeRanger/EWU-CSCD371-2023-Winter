@@ -3,9 +3,11 @@ using System.IO;
 namespace Logger.Tests;
 
 [TestClass]
-public class FileLoggerTests {
+public class FileLoggerTests
+{
     [TestMethod]
-    public void LogTest() {
+    public void LogTest()
+    {
         string       path         = @"../../../../MyTest.txt";
         FileLogger   logger       = new FileLogger(path);
         DateTime     date         = DateTime.Now;

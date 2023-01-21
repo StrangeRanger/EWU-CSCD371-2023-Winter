@@ -103,7 +103,7 @@ public class TestLogger : BaseLogger
     public List<(LogLevel LogLevel, string Message)> LoggedMessages {
         get;
     } = new List<(LogLevel, string)>();
-    
+
     /** Overwritten abstract class. */
     public override void Log(LogLevel logLevel, string message)
     {
