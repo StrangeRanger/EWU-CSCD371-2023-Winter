@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 namespace Logger.Tests;
 
@@ -104,7 +104,6 @@ public class TestLogger : BaseLogger
         get;
     } = new List<(LogLevel, string)>();
 
-    /** Overwritten abstract class. */
     public override void Log(LogLevel logLevel, string message)
     {
         LoggedMessages.Add((logLevel, message));
