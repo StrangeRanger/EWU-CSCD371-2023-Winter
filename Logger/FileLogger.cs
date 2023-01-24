@@ -7,14 +7,12 @@ public class FileLogger : BaseLogger
     // Question: What is the purpose are the auto property? Should it always be public or is
     //           it ok to make it private.
     private string FilePath { get; set; }
-
-    /** Constructor. */
+    
     public FileLogger(string filePath)
     {
         FilePath = filePath;
     }
 
-    /** Overwritten abstract class. */
     public override void Log(LogLevel logLevel, string message)
     {
         DateTime date = DateTime.Now;
