@@ -1,6 +1,22 @@
-﻿using System.IO;
-namespace Logger.Tests;
+﻿namespace Logger.Tests;
 
 [TestClass]
-public class LogFactoryTests { }
+public class LogFactoryTests
+{
+    [TestMethod]
+    public void CreateLoggerTest()
+    {
+        LogFactory logFactory = new LogFactory();
+        logFactory.ConfigureFileLogger("TestPath");
+        BaseLogger baseLogger = logFactory.CreateLogger(nameof(FileLogger));
+        Assert.IsNotNull(baseLogger);
+    }
 
+    [TestMethod]
+    public void CreateLoggerTest_ReturnsNull()
+    {
+        LogFactory logFactory = new LogFactory();
+        BaseLogger baseLogger = logFactory.CreateLogger(nameof(FileLogger));
+        Assert.AreEqual(null, baseLogger);
+    }
+}
