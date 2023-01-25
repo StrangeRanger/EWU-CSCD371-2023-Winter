@@ -1,6 +1,13 @@
-﻿namespace CanHazFunny;
+﻿using System;
+
+namespace CanHazFunny;
 
 public interface IJokeOutput
 {
-    public void PrintJoke(string output);
+    public void outputJoke(String joke)
+    {
+        Console.Out.WriteLine(joke);
+    }
+    
+    
 }
