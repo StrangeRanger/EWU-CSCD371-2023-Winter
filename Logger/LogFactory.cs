@@ -6,7 +6,7 @@ public class LogFactory
     public BaseLogger CreateLogger(string className)
     {
         if (_filePath is null) { return null; }
-        return className.Equals(nameof(FileLogger)) ? new FileLogger(_filePath) : null;
+        return new FileLogger(_filePath) { ClassName = className };
     }
 
     public void ConfigureFileLogger(string filePath)
