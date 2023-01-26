@@ -18,6 +18,11 @@ public class Jester : IJokeOutput, IJokeService
     
     public string GetJoke()
     {
-        return _jokeService.GetJoke();
+        string joke;
+        do
+        {
+            joke = _jokeService.GetJoke();
+        } while (joke.Contains("Chuck Norris"));
+        return joke;
     }
 }
