@@ -16,7 +16,6 @@ public class FileLogger : BaseLogger
     public override void Log(LogLevel logLevel, string message)
     {
         DateTime date = DateTime.Now;
-        ClassName     = nameof(FileLogger);
         string outGoing =
                 $"{date} {ClassName} {Enum.GetName(typeof(LogLevel), logLevel)}: {message}";
 
