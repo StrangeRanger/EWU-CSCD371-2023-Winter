@@ -10,7 +10,7 @@ public class BaseLoggerMixinsTests
     public void Error_WithNullLogger_ThrowsException()
     {
         // Act
-        BaseLoggerMixins.Error(null, "");
+        BaseLoggerMixins.Error(null!, "");
     }
 
     [TestMethod]
@@ -33,7 +33,7 @@ public class BaseLoggerMixinsTests
     public void Warning_WithNullLogger_ThrowsException()
     {
         // Act
-        BaseLoggerMixins.Warning(null, "");
+        BaseLoggerMixins.Warning(null!, "");
     }
 
     [TestMethod]
@@ -56,7 +56,7 @@ public class BaseLoggerMixinsTests
     public void Information_WithNullLogger_ThrowsException()
     {
         // Act
-        BaseLoggerMixins.Information(null, "");
+        BaseLoggerMixins.Information(null!, "");
     }
 
     [TestMethod]
@@ -79,7 +79,7 @@ public class BaseLoggerMixinsTests
     public void Debug_WithNullLogger_ThrowsException()
     {
         // Act
-        BaseLoggerMixins.Debug(null, "");
+        BaseLoggerMixins.Debug(null!, "");
     }
 
     [TestMethod]
