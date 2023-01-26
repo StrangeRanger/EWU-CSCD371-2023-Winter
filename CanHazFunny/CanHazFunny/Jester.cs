@@ -1,15 +1,19 @@
 using System;
-namespace CanHazFunny; 
+namespace CanHazFunny;
 
-public class Jester : IJokeOutput, IJokeService {
-    private JokeService jokeService = new();    
-    public void TellJoke() {
-        PrintJoke(jokeService.GetJoke());
+public class Jester : IJokeOutput, IJokeService
+{
+    private JokeService _jokeService = new();
+
+    public void TellJoke()
+    {
+        PrintJoke(_jokeService.GetJoke());
     }
 
-    public void PrintJoke(string output) {
+    public void PrintJoke(string output)
+    {
         Console.Out.WriteLine(output);
-        //throw new NotImplementedException();
+        // throw new NotImplementedException();
     }
 
     public string GetJoke()
