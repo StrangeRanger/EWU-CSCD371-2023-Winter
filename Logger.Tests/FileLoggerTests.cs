@@ -6,18 +6,19 @@ namespace Logger.Tests;
 public class FileLoggerTests
 {
     [TestMethod]
-    public void LogTest()
+    public void LogTest_TestMessage_AreEqual()
     {
-        string       path     = Path.GetTempFileName();
+        string       path         = Path.GetTempFileName();
         FileLogger   logger       = new FileLogger(path);
         DateTime     date         = DateTime.Now;
+        String       className    = nameof(FileLogger);
         StringWriter stringWriter = new StringWriter();
         Console.SetOut(stringWriter);
 
         logger.Log(LogLevel.Error, "Test message");
         StreamReader sr = File.OpenText(path);
 
-        Assert.AreEqual($"{date} FileLogger Error: Test message", sr.ReadLine());
+        Assert.AreEqual($"{date} {className} Error: Test message", sr.ReadLine());
         sr.Close();
     }
 }
