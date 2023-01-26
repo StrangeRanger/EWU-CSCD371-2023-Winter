@@ -4,7 +4,7 @@ namespace Logger.Tests;
 public class LogFactoryTests
 {
     [TestMethod]
-    public void CreateLoggerTest()
+    public void CreateLogger_Configured_ReturnsNotNull()
     {
         LogFactory logFactory = new LogFactory();
         logFactory.ConfigureFileLogger("TestPath");
