@@ -8,7 +8,7 @@ public class LogFactoryTests
     {
         LogFactory logFactory = new LogFactory();
         logFactory.ConfigureFileLogger("TestPath");
-        BaseLogger baseLogger = logFactory.CreateLogger(nameof(FileLogger));
+        BaseLogger baseLogger = logFactory.CreateLogger(nameof(LogFactoryTests));
         Assert.IsNotNull(baseLogger);
     }
 
