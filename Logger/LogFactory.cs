@@ -3,6 +3,7 @@ namespace Logger;
 public class LogFactory
 {
     private string? _filePath;
+
     public BaseLogger CreateLogger(string className)
     {
         if (_filePath is null) { return null!; }
