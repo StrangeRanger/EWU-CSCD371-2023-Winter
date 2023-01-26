@@ -8,7 +8,7 @@ public class FileLoggerTests
     [TestMethod]
     public void LogTest()
     {
-        string       path         = @"../../../../MyTest.txt";
+        string       path     = Path.GetTempFileName();
         FileLogger   logger       = new FileLogger(path);
         DateTime     date         = DateTime.Now;
         StringWriter stringWriter = new StringWriter();
