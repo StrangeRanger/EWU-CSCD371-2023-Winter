@@ -11,7 +11,8 @@ public static class BaseLoggerMixins
         baseLogger.Log(logLevel, string.Format(message, args));
     }
 
-    public static void Warning(this BaseLogger baseLogger, string message, params object[] args)
+    public static void Warning(this BaseLogger baseLogger, string message,
+                               params object[] args)
     {
         if (baseLogger is null) { throw new ArgumentNullException(); }
 
