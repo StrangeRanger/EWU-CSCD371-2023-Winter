@@ -8,15 +8,15 @@ public class FileLogger : BaseLogger
     //           it ok to make it private.
     private string FilePath { get; set; }
 
-    public FileLogger(string filePath)
+    public FileLogger(string filePath, string className)
     {
+        ClassName = className;
         FilePath = filePath;
     }
 
     public override void Log(LogLevel logLevel, string message)
     {
         DateTime date   = DateTime.Now;
-        ClassName       = nameof(FileLogger);
         string outGoing = $"{date} {ClassName} {logLevel}: {message}";
 
         StreamWriter streamWriter = File.CreateText(FilePath);

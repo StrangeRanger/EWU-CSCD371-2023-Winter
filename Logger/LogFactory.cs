@@ -7,7 +7,7 @@ public class LogFactory
     public BaseLogger CreateLogger(string className)
     {
         if (_filePath is null) { return null!; }
-        return new FileLogger(_filePath) { ClassName = className };
+        return new FileLogger(_filePath, className);
     }
 
     public void ConfigureFileLogger(string filePath)
