@@ -20,5 +20,6 @@ public class FileLoggerTests
 
         Assert.AreEqual($"{date} {className} Error: Test message", sr.ReadLine());
         sr.Close();
+        File.Delete(path);
     }
 }
