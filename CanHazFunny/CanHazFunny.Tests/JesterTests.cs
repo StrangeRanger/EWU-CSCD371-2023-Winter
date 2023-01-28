@@ -6,17 +6,29 @@ namespace CanHazFunny.Tests;
 [TestClass]
 public class JesterTests
 {
+    private Jester? Jester { get; set; }
+    
+    [TestInitialize]
+    public  void TestInitialize()
+    {
+        TestCleanup();
+        Jester = new Jester();
+    }
+    
+    [TestCleanup]
+    public void TestCleanup()
+    {
+        Jester = null;
+    }
+    
     [TestMethod]
     public void TellJoke_ShouldNotContainChuckNorris()
     {
         StringWriter stringWriter = new();
         Console.SetOut(stringWriter);
 
-        // Arrange
-        Jester jester = new();
-
         // Act
-        jester.TellJoke();
+        Jester.TellJoke();
 
         // Assert
         Assert.IsFalse(stringWriter.ToString().Contains("Chuck Norris"));
@@ -25,13 +37,16 @@ public class JesterTests
     [TestMethod]
     public void TellJoke_ShouldNotReturnNull()
     {
-        // Arrange
-        Jester jester = new();
-
         // Act
-        String joke = jester.GetJoke();
+        string joke = Jester.GetJoke();
 
         // Assert
         Assert.IsNotNull(joke);
     }
+
+    [TestMethod]
+    public void Jester_Initialize_IsNotNull() {
+        Assert.IsNotNull(Jester);
+    }
+
 }
