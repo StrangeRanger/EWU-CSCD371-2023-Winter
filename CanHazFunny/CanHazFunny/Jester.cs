@@ -3,8 +3,9 @@ namespace CanHazFunny;
 
 public class Jester : IJokeOutput, IJokeService
 {
-    private JokeService _jokeService;
     private JokeOutput  _jokeOutput;
+    private JokeService _jokeService;
+    
 
     public Jester()
     {
