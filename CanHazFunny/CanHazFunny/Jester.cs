@@ -1,9 +1,19 @@
+using System;
 namespace CanHazFunny;
 
 public class Jester : IJokeOutput, IJokeService
 {
-    private JokeService _jokeService = new();
-    private JokeOutput  _jokeOutput  = new();
+    private JokeService _jokeService;
+    private JokeOutput  _jokeOutput;
+
+    public Jester()
+    {
+        _jokeOutput  = new JokeOutput();
+        _jokeService = new JokeService();
+
+        if (_jokeOutput is null) { throw new ArgumentNullException(nameof(_jokeOutput)); }
+        if (_jokeService is null) { throw new ArgumentNullException(nameof(_jokeService)); }
+    }
 
     public void TellJoke()
     {
