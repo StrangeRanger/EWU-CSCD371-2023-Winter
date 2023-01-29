@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CCBDB7C6-C156-4D43-BE79-B420FF988951}"
 	ProjectSection(SolutionItems) = preProject
 		..\README.md = ..\README.md
+		Directory.Build.Props = Directory.Build.Props
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CanHazFunny.Tests", "CanHazFunny.Tests\CanHazFunny.Tests.csproj", "{713AEBB1-BEE0-451E-8744-17EDC1282165}"

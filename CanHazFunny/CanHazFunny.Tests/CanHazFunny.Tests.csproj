@@ -1,11 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <Import Project="..\Directory.Build.Props" />
+
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <LangVersion>11.0</LangVersion>
-    <Nullable>enable</Nullable>
-    <EnableNETAnalyzers>true</EnableNETAnalyzers>
-    <WarningsAsErrors>true</WarningsAsErrors>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
