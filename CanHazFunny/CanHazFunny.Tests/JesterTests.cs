@@ -24,7 +24,7 @@ public class JesterTests
     [TestMethod]
     public void TellJoke_ShouldNotContainChuckNorris()
     {
-        StringWriter stringWriter = new StringWriter();
+        StringWriter stringWriter = new();
         Console.SetOut(stringWriter);
 
         // Act
@@ -37,7 +37,7 @@ public class JesterTests
     [TestMethod]
     public void TellJoke_ShouldNotBeNull()
     {
-        StringWriter stringWriter = new StringWriter();
+        StringWriter stringWriter = new();
         Console.SetOut(stringWriter);
 
         // Act
