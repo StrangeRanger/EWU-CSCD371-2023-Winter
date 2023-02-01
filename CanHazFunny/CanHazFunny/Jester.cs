@@ -1,38 +1,45 @@
 using System;
 namespace CanHazFunny;
 
-public class Jester : IJokeOutput, IJokeService
+public class Jester
 {
-    private JokeOutput  _jokeOutput;
-    private JokeService _jokeService;
-    
-
-    public Jester()
+    private IJokeOutput? _JokeOutput;
+    public IJokeOutput JokeOutput
     {
-        _jokeOutput  = new JokeOutput();
-        _jokeService = new JokeService();
+        get {
+            return _JokeOutput!;
+        }
+        set {
+            _JokeOutput = value ?? throw new ArgumentNullException(nameof(value));
+        }
+    }
 
-        if (_jokeOutput is null) { throw new ArgumentNullException(nameof(_jokeOutput)); }
-        if (_jokeService is null) { throw new ArgumentNullException(nameof(_jokeService)); }
+    private IJokeService? _JokeService;
+    public IJokeService JokeService
+    {
+        get {
+            return _JokeService!;
+        }
+        set {
+            _JokeService = value ?? throw new ArgumentNullException(nameof(value));
+        }
+    }
+
+    /** Constructor. */
+    public Jester(IJokeOutput jokeOutput, IJokeService jokeService)
+    {
+        JokeOutput  = jokeOutput;
+        JokeService = jokeService;
     }
 
     public void TellJoke()
     {
-        string joke = GetJoke();
-        PrintJoke(joke);
-    }
-
-    public void PrintJoke(string output)
-    {
-        _jokeOutput.PrintJoke(output);
-    }
-
-    public string GetJoke()
-    {
         string joke;
+
         do {
-            joke = _jokeService.GetJoke();
+            joke = JokeService.GetJoke();
         } while (joke.Contains("Chuck Norris"));
-        return joke;
+
+        JokeOutput.PrintJoke(joke);
     }
 }
