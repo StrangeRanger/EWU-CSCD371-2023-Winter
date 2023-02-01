@@ -12,9 +12,9 @@ public class FileLoggerTests
         FileLogger   logger       = new FileLogger(path, nameof(FileLoggerTests));
         DateTime     date         = DateTime.Now;
         String       className    = nameof(FileLoggerTests);
-        StringWriter stringWriter = new StringWriter();
+        StringWriter stringWriter = new();
+        
         Console.SetOut(stringWriter);
-
         logger.Log(LogLevel.Error, "Test message");
         StreamReader sr = File.OpenText(path);
 
