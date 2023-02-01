@@ -2,16 +2,16 @@ namespace Logger;
 
 public class LogFactory
 {
-    private string? _filePath;
+    private string? _FilePath;
 
     public BaseLogger CreateLogger(string className)
     {
-        if (_filePath is null) { return null!; }
-        return new FileLogger(_filePath, className);
+        if (_FilePath is null) { return null!; }
+        return new FileLogger(_FilePath, className);
     }
 
     public void ConfigureFileLogger(string filePath)
     {
-        _filePath = filePath;
+        _FilePath = filePath;
     }
 }
