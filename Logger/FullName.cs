@@ -13,9 +13,16 @@ public record struct FullName
         FirstName = firstName ?? throw new ArgumentNullException(nameof(firstName));
         LastName = lastName ?? throw new ArgumentNullException(nameof(lastName));
     }
-    public string getFullName()
+    public override string ToString()
     {
-        return $"{FirstName} {MiddleName} {LastName}";
+        if (MiddleName is null)
+        {
+            return $"{FirstName} {LastName}";
+        }
+        else
+        {
+            return $"{FirstName} {MiddleName} {LastName}";
+        }
     }
     public string FirstName { get; init; }
     public string? MiddleName { get; set; }
