@@ -1,8 +1,7 @@
 ﻿namespace Logger;
 
-public class Book : Entity
+public record struct Book : IEntity
 {
-    public Book(Guid id, string name) : base(id, name)
-    {
-    }
+    public Guid Id { get; init; }
+    public string Name { get; set; }
 }

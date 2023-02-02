@@ -1,8 +1,7 @@
 ﻿namespace Logger;
 
-public class Student : Entity
+public record struct Student : IEntity
 {
-    public Student(Guid id, string name) : base(id, name)
-    {
-    }
+    public Guid Id { get; init; }
+    public string Name { get; set; }
 }
