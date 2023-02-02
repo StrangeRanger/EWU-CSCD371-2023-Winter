@@ -1,19 +1,20 @@
 ﻿namespace Logger;
 
-public record struct FullName(string FirstName, string LastName, string? MiddleName = null)
+public record class FullName
+(string FirstName, string LastName, string? MiddleName = null)
 {
     /* Properties */
-    public string FirstName { get; } = FirstName ?? throw new ArgumentNullException(nameof(FirstName));
+    public string FirstName {
+        get;
+    } = FirstName ?? throw new ArgumentNullException(nameof(FirstName));
+    public string LastName {
+        get;
+    } = LastName ?? throw new ArgumentNullException(nameof(LastName));
     public string ? MiddleName { get; } = MiddleName;
-    public string LastName { get; } = LastName ?? throw new ArgumentNullException(nameof(LastName));
 
     public override string ToString()
     {
-        if (MiddleName is null) {
-            return $"{FirstName} {LastName}";
-        } else {
-            return $"{FirstName} {MiddleName} {LastName}";
-        }
+        return MiddleName is null ? $"{FirstName} {LastName}"
+                                  : $"{FirstName} {MiddleName} {LastName}";
     }
 }
-
