@@ -20,6 +20,6 @@ public class FullNameTest
         FullName fullName = new FullName("John", "Doe", "Smith");
         
         // Assert
-        Assert.AreEqual("John Doe Smith", fullName.ToString());
+        Assert.AreEqual("John Smith Doe", fullName.ToString());
     }
 }
