@@ -1,6 +1,6 @@
 ﻿namespace Logger;
 
-public record FullName
+public record struct FullName
 {
     public FullName(string firstName, string middleName, string lastName)
     {
