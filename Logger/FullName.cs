@@ -13,6 +13,7 @@ public record struct FullName(string FirstName, string? MiddleName, string LastN
         FirstName = firstName ?? throw new ArgumentNullException(nameof(firstName));
         LastName = lastName ?? throw new ArgumentNullException(nameof(lastName));
     }
+    
     public override string ToString()
     {
         if (MiddleName is null) {
