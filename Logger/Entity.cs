@@ -7,8 +7,7 @@ public abstract class Entity : IEntity
         Name = name;
     }
 
-    public Guid     Id       { get; init; }
-    public FullName FullName { get; set; }
+    public Guid   Id   { get; init; }
     public string Name { get; set; }
 }
 

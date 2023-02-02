@@ -3,5 +3,5 @@
 public interface IEntity
 {
     public Guid Id { get; init; }
-    public FullName FullName { get; set; }
+    public string Name { get; set; }
 }

@@ -8,6 +8,7 @@ public record struct FullName
         MiddleName = middleName;
         LastName = lastName;
     }
+    
     public string FirstName { get; init; }
     public string MiddleName { get; init; }
     public string LastName { get; init; }
