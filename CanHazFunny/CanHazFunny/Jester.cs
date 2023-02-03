@@ -6,10 +6,12 @@ public class Jester
     private IJokeOutput? _JokeOutput;
     public IJokeOutput JokeOutput
     {
-        get {
+        get
+        {
             return _JokeOutput!;
         }
-        set {
+        set
+        {
             _JokeOutput = value ?? throw new ArgumentNullException(nameof(value));
         }
     }
@@ -17,10 +19,12 @@ public class Jester
     private IJokeService? _JokeService;
     public IJokeService JokeService
     {
-        get {
+        get
+        {
             return _JokeService!;
         }
-        set {
+        set
+        {
             _JokeService = value ?? throw new ArgumentNullException(nameof(value));
         }
     }
@@ -28,7 +32,7 @@ public class Jester
     /** Constructor. */
     public Jester(IJokeOutput jokeOutput, IJokeService jokeService)
     {
-        JokeOutput  = jokeOutput;
+        JokeOutput = jokeOutput;
         JokeService = jokeService;
     }
 
@@ -36,7 +40,8 @@ public class Jester
     {
         string joke;
 
-        do {
+        do
+        {
             joke = JokeService.GetJoke();
         } while (joke.Contains("Chuck Norris"));
 

@@ -33,7 +33,7 @@ public class JesterTests
         // Assert
         Assert.IsFalse(stringWriter.ToString().Contains("Chuck Norris"));
     }
-    
+
     [TestMethod]
     public void TellJoke_ShouldNotBeNull()
     {
