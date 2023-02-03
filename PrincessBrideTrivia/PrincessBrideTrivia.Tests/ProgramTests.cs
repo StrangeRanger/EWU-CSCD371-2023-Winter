@@ -60,7 +60,7 @@ namespace PrincessBrideTrivia.Tests
         [DataRow(5, 10, "50%")]
         [DataRow(1, 10, "10%")]
         [DataRow(0, 10, "0%")]
-        public void GetPercentCorrect_ReturnsExpectedPercentage(int numberOfCorrectGuesses, 
+        public void GetPercentCorrect_ReturnsExpectedPercentage(int numberOfCorrectGuesses,
             int numberOfQuestions, string expectedString)
         {
             // Arrange
