@@ -24,14 +24,14 @@ public class BaseLoggerMixinsTests
         logger.Error("Message 42");
 
         // Assert
-        Assert.AreEqual(1, logger.LoggedMessages.Count);
-        Assert.AreEqual(LogLevel.Error, logger.LoggedMessages[0].LogLevel);
-        Assert.AreEqual("Message 42", logger.LoggedMessages[0].Message);
+        Assert.AreEqual(1, logger.LoggedTestMessages.Count);
+        Assert.AreEqual(LogLevel.Error, logger.LoggedTestMessages[0].LogLevel);
+        Assert.AreEqual("Message 42", logger.LoggedTestMessages[0].Message);
     }
 
 }
 
-public class TestLogger : BaseLogger
+/*public partial class TestLogger : BaseLogger
 {
     public TestLogger(string logSource)
     {
@@ -46,4 +46,4 @@ public class TestLogger : BaseLogger
     {
         LoggedMessages.Add((logLevel, message));
     }
-}
+}*/
