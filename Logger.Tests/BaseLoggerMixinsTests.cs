@@ -31,7 +31,7 @@ public class BaseLoggerMixinsTests
 
 }
 
-/*public partial class TestLogger : BaseLogger
+public class TestLogger : BaseLogger
 {
     public TestLogger(string logSource)
     {
@@ -46,4 +46,4 @@ public class BaseLoggerMixinsTests
     {
         LoggedMessages.Add((logLevel, message));
     }
-}*/
+}
