@@ -5,12 +5,8 @@ namespace Logger;
  */
 public abstract record class Entity : IEntity
 {
-    public Guid Id {
-        get; init;
-    }
-    public abstract string Name {
-        get; set;
-    }
+    public Guid Id { get; init; }
+    public abstract string Name { get; set; }
 
     // Constructor.
     protected Entity(Guid id, string? name = null)
