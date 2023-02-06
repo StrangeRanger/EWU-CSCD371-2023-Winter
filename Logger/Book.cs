@@ -10,4 +10,6 @@ public record class Book : Entity
         Name = name;
         Author = author;
     }
+    
+    public override string ToString() => $"{Name} by {Author}";
 }
