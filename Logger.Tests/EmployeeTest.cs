@@ -24,4 +24,13 @@ public class EmployeeTest
         Assert.AreEqual("Doe", employee.LastName);
         Assert.AreEqual("Michael", employee.MiddleName);
     }
+    
+    [TestMethod]
+    public void AreSame_Employee()
+    {
+        Guid id = Guid.NewGuid();
+        Employee employee1 = new Employee(id, "John Doe");
+        Employee employee2 = new Employee(id, "John Doe");
+        Assert.IsTrue(employee1.Equals(employee2));
+    }
 }

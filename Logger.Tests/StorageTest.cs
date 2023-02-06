@@ -22,6 +22,30 @@ public class StorageTest
         storage.Add(employee);
         Assert.IsTrue(storage.Contains(employee));
     }
+    
+    [TestMethod]
+    public void Add_Book()
+    {
+        Storage storage = new Storage();
+        Book book = new Book("The Hitchhiker's Guide to the Galaxy", "Douglas Adams");
+        storage.Add(book);
+        Assert.IsTrue(storage.Contains(book));
+    }
+    
+    [TestMethod]
+    public void Add_All()
+    {
+        Storage storage = new Storage();
+        Student student = new Student(Guid.NewGuid(), "John Doe");
+        Employee employee = new Employee(Guid.NewGuid(), "John Doe");
+        Book book = new Book("The Hitchhiker's Guide to the Galaxy", "Douglas Adams");
+        storage.Add(student);
+        storage.Add(employee);
+        storage.Add(book);
+        Assert.IsTrue(storage.Contains(student));
+        Assert.IsTrue(storage.Contains(employee));
+        Assert.IsTrue(storage.Contains(book));
+    }
 
     [TestMethod]
     public void Remove_Student()
@@ -41,6 +65,16 @@ public class StorageTest
         storage.Add(employee);
         storage.Remove(employee);
         Assert.IsFalse(storage.Contains(employee));
+    }
+    
+    [TestMethod]
+    public void Remove_Book()
+    {
+        Storage storage = new Storage();
+        Book book = new Book("The Hitchhiker's Guide to the Galaxy", "Douglas Adams");
+        storage.Add(book);
+        storage.Remove(book);
+        Assert.IsFalse(storage.Contains(book));
     }
 
     [TestMethod]

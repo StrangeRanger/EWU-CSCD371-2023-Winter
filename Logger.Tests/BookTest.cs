@@ -15,4 +15,11 @@ public class BookTest
         Assert.AreEqual("The Hobbit by J.R.R. Tolkien", book.ToString());
     }
     
+    [TestMethod]
+    public void AreSame_Book()
+    {
+        var book1 = new Book("The Hobbit", "J.R.R. Tolkien");
+        var book2 = new Book("The Hobbit", "J.R.R. Tolkien");
+        Assert.IsTrue(book1.Equals(book2));
+    }
 }

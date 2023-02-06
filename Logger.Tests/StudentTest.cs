@@ -25,4 +25,13 @@ public class StudentTest
         Assert.AreEqual("Michael", student.MiddleName);
     }
     
+    [TestMethod]
+    public void AreSame_Student()
+    {
+        Guid id = Guid.NewGuid();
+        Student student1 = new Student(id, "John Doe");
+        Student student2 = new Student(id, "John Doe");
+        Assert.IsTrue(student1.Equals(student2));
+    }
+    
 }
