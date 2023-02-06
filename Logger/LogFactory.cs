@@ -1,4 +1,5 @@
-﻿namespace Logger;
+﻿/*
+namespace Logger;
 
 public class LogFactory
 {
@@ -9,3 +10,4 @@ public class LogFactory
 
     public void ConfigureFileLogger(string fileName) => FileName=fileName;
 }
+*/

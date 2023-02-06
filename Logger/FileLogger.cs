@@ -1,4 +1,4 @@
-﻿namespace Logger;
+﻿/*namespace Logger;
 
 public class FileLogger : BaseLogger, ILogger
 {
@@ -36,4 +36,4 @@ public class FileLogger : BaseLogger, ILogger
     }
 
     public override string LogSource { get; }
-}
+}*/

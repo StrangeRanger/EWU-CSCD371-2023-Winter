@@ -1,4 +1,5 @@
-﻿namespace Logger.Tests;
+﻿/*
+namespace Logger.Tests;
 
 public class TestLogger : BaseLogger, ILogger
 {
@@ -23,3 +24,4 @@ public class TestLoggerConfiguration : BaseLoggerConfiguration, ILoggerConfigura
     public TestLoggerConfiguration(string logSource) : base(logSource) { }
 
 }
+*/
