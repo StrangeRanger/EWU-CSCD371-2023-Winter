@@ -1,33 +1,19 @@
 ﻿namespace Logger;
 
-public record struct Employee : IEntity
+public record class Employee : Entity
 {
-    public Employee(Guid? id, string? firstMiddleLastName)
-    {
-        Id = id ?? throw new ArgumentNullException(nameof(id));;
-        Name = firstMiddleLastName ?? throw new ArgumentNullException(nameof(firstMiddleLastName));
+    private FullName? EntityFullName {
+        get; set;
     }
-    public Guid Id { get; init; }
-    private FullName? EntityFullName { get; set; }
-    
-    public string firstName
+    public Employee(Guid id, string firstMiddleLastName) : base(id)
     {
-        get => EntityFullName!.FirstName;
-    }
-    
-    public string lastName
-    {
-        get => EntityFullName!.LastName;
-    }
-    
-    public string middleName
-    {
-        get => EntityFullName!.MiddleName ?? "";
+        Id = id;
+        Name = firstMiddleLastName;
     }
 
-    public string Name
+    public override string Name
     {
-        get => EntityFullName!.ToString();
+        get => EntityFullName.ToString();
         set
         {
             string firstName = value.Substring(0, value.IndexOf(' '));
@@ -36,5 +22,4 @@ public record struct Employee : IEntity
             EntityFullName = new(firstName, lastName, middleName);
         }
     }
-    
 }

@@ -2,7 +2,7 @@
 
 public class FileLogger : BaseLogger, ILogger
 {
-    public FileLogger(string logSource, string filePath)
+    public FileLogger(string logSource, string filePath) : base(logSource)
     {
         LogSource = logSource;
         File = new FileInfo(filePath);
