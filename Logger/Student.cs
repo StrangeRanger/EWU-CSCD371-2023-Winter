@@ -1,19 +1,44 @@
 ﻿namespace Logger;
 
-public record class Student(Guid Id) : Entity(Id)
+public record class Student : Entity
 {
-    private FullName _FullName;
-    public FullName FullName { get => _FullName; set => _FullName = value; }
+    /* ##################### [ Properties Part 1 ] ##################### */
 
+    public FullName EntityFullName { get; set; }
+
+    public string FirstName
+    {
+        get { return EntityFullName.FirstName; }
+    }
+    
+    public string LastName
+    {
+        get { return EntityFullName.LastName; }
+    }
+    
+    public string? MiddleName
+    {
+        get { return EntityFullName.MiddleName; }
+    }
+
+    /* ##################### [ Properties Part 2 ] ##################### */
+    
     public override string Name
     {
-        get { return FullName.ToString(); }
+        get { return EntityFullName.ToString(); }
         set
         {
-            string firstName = value.Substring(0, value.IndexOf(' '));
-            string lastName = value.Substring(value.LastIndexOf(' ') + 1);
-            string middleName = value.Substring(value.IndexOf(' ') + 1, value.LastIndexOf(' '));
-            FullName = new(firstName, lastName, middleName);
+            string[] array = value.Split(' ');
+            string firstName = array[0];
+            string lastName = array[1];
+            string middleName = array.Length > 2 ? array[2] : null; // TODO: MAKE THIS BETTER
+            EntityFullName = new FullName(firstName, lastName, middleName);
         }
+    }
+    
+    public Student(Guid id, string fullName) : base(id)
+    {
+        Id = id;
+        Name = fullName;
     }
 }
