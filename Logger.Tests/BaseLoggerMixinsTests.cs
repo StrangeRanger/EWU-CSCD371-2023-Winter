@@ -31,21 +31,3 @@ public class BaseLoggerMixinsTests
     }
 
 }
-
-public class TestLogger : BaseLogger
-{
-    public TestLogger(string logSource)
-    {
-        LogSource=logSource;
-    }
-    public List<(LogLevel LogLevel, string Message)> LoggedMessages { get; } = new List<(LogLevel, string)>();
-
-    public override string LogSource { get; }
-
-
-    public override void Log(LogLevel logLevel, string message)
-    {
-        LoggedMessages.Add((logLevel, message));
-    }
-}
-*/
