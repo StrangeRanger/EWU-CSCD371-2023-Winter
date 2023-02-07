@@ -1,8 +1,15 @@
 ﻿namespace Logger;
 
+/**
+ * TODO: We weren't sure how to refactor the similarities of the Employee and Student class,
+ * because as it stands, if we did that, we could just add everything into pretty much a
+ * single file, which doesn't really make sense if, if both classes represent separate objects.
+ * Please give use some input on what you think we should do
+ */
+
 public record class Student : Entity
 {
-    /* ##################### [ Properties Part 1 ] ##################### */
+    /* ************************ [ Properties Part 1 ] ************************ */
 
     public FullName EntityFullName { get; set; }
 
@@ -21,9 +28,13 @@ public record class Student : Entity
         get { return EntityFullName.MiddleName; }
     }
 
-    /* ##################### [ Properties Part 2 ] ##################### */
+    /* ************************ [ Properties Part 2 ] ************************ */
     
-    public override string Name
+    /* Implemented implicitly, because there is no need to implicitly implement this property.
+     * Additionally, "'Entity' in explicit interface declaration is not an interface", and it
+     * wouldn't make sense to implement the the IEntity interface when we are extending Entity.
+     */
+    public sealed override string Name
     {
         get { return EntityFullName.ToString(); }
         set
@@ -36,6 +47,7 @@ public record class Student : Entity
         }
     }
     
+    // Constructor.
     public Student(Guid id, string fullName) : base(id)
     {
         Id = id;
