@@ -1,5 +1,4 @@
-﻿/*
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Logger.Tests;
 
@@ -33,4 +32,3 @@ public class FileLoggerTests : FileLoggerTestsBase
         }
     }
 }
-*/

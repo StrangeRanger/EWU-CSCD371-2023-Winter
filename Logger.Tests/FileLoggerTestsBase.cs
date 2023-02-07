@@ -1,5 +1,4 @@
-﻿/*
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Logger.Tests;
 
@@ -24,4 +23,3 @@ public class FileLoggerTestsBase
         if (File.Exists(FilePath)) File.Delete(FilePath);
     }
 }
-*/
