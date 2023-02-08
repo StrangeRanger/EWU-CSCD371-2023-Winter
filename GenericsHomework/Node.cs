@@ -9,9 +9,15 @@ public class Node<T>
         Next = this;
     }
     
-    public Node<T> Next { get; set; }
-    
+    public Node<T> Next { get; private set; }
     public object Value { get; set; }
+
+    public void Append(T value)
+    {
+        Node<T> nextNode = new Node<T>(value);
+        Next = nextNode;
+    }
+
 
     public override string ToString()
     {
