@@ -23,4 +23,34 @@ public class NodeTest
         Assert.AreEqual(30, node.Next.Next.Value);
         Assert.AreEqual(40, node.Next.Next.Next.Value);
     }
+    
+    [TestMethod]
+    public void Node_Clear_NextNodeIsNode()
+    {
+        Node<int> node = new Node<int>(19);
+        
+        node.Append(20);
+        node.Append(30);
+        node.Append(40);
+        
+        node.Clear();
+        
+        Assert.AreEqual(node, node.Next);
+    }
+    
+    // [TestMethod]
+    // public void TestCheckLength()
+    // {
+    //     Node<int> node = new Node<int>(19);
+    //     
+    //     node.Append(20);
+    //     node.Append(30);
+    //     node.Append(40);
+    //
+    //     Assert.AreEqual(4, node.NumberOfItems());
+    //     node.Clear();
+    //     Assert.AreEqual(1, node.NumberOfItems());
+    //     
+    //     //Assert.AreEqual(node, node.Next);
+    // }
 }

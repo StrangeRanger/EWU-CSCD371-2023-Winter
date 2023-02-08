@@ -24,6 +24,24 @@ public class Node<T>
         current.Next = new Node<T>(value);
     }
 
+    public void Clear()
+    {
+        Next = this;
+    }
+
+    // public int NumberOfItems()
+    // {
+    //     Node<T> current = this;
+    //     int count = 1;
+    //     
+    //     while (current.Next != current) 
+    //     {
+    //         current = current.Next;
+    //         count++;
+    //     }
+    //
+    //     return count;
+    // }
 
     public override string ToString()
     {
