@@ -14,11 +14,13 @@ public class Node<T>
 
     public void Append(T value)
     {
-        var current = this;
+        Node<T> current = this;
+        
         while (current.Next != current)
         {
-            current = current.Next.Next;
+            current = current.Next;
         }
+        
         current.Next = new Node<T>(value);
     }
 
