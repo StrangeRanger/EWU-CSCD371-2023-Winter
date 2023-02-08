@@ -351,3 +351,6 @@ MigrationBackup/
 
 # Live unit testing files.
 *.lutconfig
+
+# Others
+.idea
