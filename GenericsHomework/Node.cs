@@ -1,5 +1,5 @@
 ﻿namespace GenericsHomework;
 
-public class Class1
+public class Node
 {
 }
