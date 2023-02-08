@@ -7,4 +7,11 @@ public class NodeTest
     public void TestMethod1()
     {
     }
+    
+    [TestMethod]
+    public void NextNodeIsNotNull()
+    {
+        Node node = new Node();
+        Assert.AreSame(node, node.Next);
+    }
 }
