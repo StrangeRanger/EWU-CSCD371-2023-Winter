@@ -4,14 +4,9 @@ namespace GenericsHomework.Tests;
 public class NodeTest
 {
     [TestMethod]
-    public void TestMethod1()
-    {
-    }
-    
-    [TestMethod]
     public void NextNodeIsNotNull()
     {
-        Node node = new Node();
-        Assert.AreSame(node, node.Next);
+        Node<int> node = new Node<int>(19);
+        Assert.IsNotNull(node.Next);
     }
 }

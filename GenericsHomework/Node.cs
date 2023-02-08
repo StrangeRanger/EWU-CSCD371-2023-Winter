@@ -1,19 +1,21 @@
 ﻿namespace GenericsHomework;
 
-public class Node
+public class Node<T>
 {
-    private Node _nextNode;
-    public Node Next {
-        get
-        {
-            if (_nextNode == null)
-            {
-                return this;
-            }
-            else
-            {
-                return _nextNode;
-            }
-        }
+    // Must be non-nullable.
+    public Node(T value)
+    {
+        Value = value;
+        Next = this;
     }
+    
+    public Node<T> Next { get; set; }
+    
+    public object Value { get; set; }
+
+    public override string ToString()
+    {
+        return base.ToString();
+    }
+    
 }
