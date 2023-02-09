@@ -19,9 +19,9 @@ public class NodeTest
         node.Append(30);
         node.Append(40);
         
-        Assert.AreEqual(20, node.Next.Value);
-        Assert.AreEqual(30, node.Next.Next.Value);
-        Assert.AreEqual(40, node.Next.Next.Next.Value);
+        Assert.AreEqual<int>(20, (int)node.Next.Value);
+        Assert.AreEqual<int>(30, (int)node.Next.Next.Value);
+        Assert.AreEqual<int>(40, (int)node.Next.Next.Next.Value);
     }
     
     [TestMethod]
@@ -35,7 +35,7 @@ public class NodeTest
         
         node.Clear();
         
-        Assert.AreEqual(node, node.Next);
+        Assert.AreEqual<Node<int>>(node, node.Next);
     }
     
     [TestMethod]
@@ -83,7 +83,7 @@ public class NodeTest
         node.Append(30);
         node.Append(40);
         
-        Assert.AreEqual("{ 19, 20, 30, 40 }", node.ToString());
+        Assert.AreEqual<string>("{ 19, 20, 30, 40 }", node.ToString());
     }
     
     // NOTE: Please pay no mind to this method. I was doing some testing and would like to keep
