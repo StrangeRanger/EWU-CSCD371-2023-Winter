@@ -1,9 +1,8 @@
-﻿namespace GenericsHomework;
+﻿using System;
+namespace GenericsHomework;
 
 public class DuplicateDataInArrayException : Exception
 {
-    public DuplicateDataInArrayException(string message) : base(message)
-    {
-        
-    }
+    public DuplicateDataInArrayException(string? message) : base(message)
+    { }
 }

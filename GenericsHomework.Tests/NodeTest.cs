@@ -62,6 +62,18 @@ public class NodeTest
         Assert.IsFalse(node.Contains(50));
     }
     
+    [TestMethod]
+    [ExpectedException(typeof(DuplicateDataInArrayException))]
+    public void Node_Append_ThrowsDuplicateDataInArrayException()
+    {
+        Node<int> node = new Node<int>(19);
+        
+        node.Append(20);
+        node.Append(30);
+        node.Append(40);
+        node.Append(20);
+    }
+
     // [TestMethod]
     // public void TestCheckLength()
     // {

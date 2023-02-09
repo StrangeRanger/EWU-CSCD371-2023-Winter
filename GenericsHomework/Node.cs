@@ -1,4 +1,4 @@
-﻿using System.Data;
+﻿using System;
 namespace GenericsHomework;
 
 public class Node<T>
@@ -20,7 +20,7 @@ public class Node<T>
         while (current.Next != current)
         {
             if (current.Value.Equals(value)) {
-                throw new InvalidExpressionException(nameof(value));
+                throw new DuplicateDataInArrayException(nameof(value));
             }
             
             current = current.Next;
