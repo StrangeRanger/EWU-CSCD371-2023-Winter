@@ -1,4 +1,5 @@
-﻿namespace GenericsHomework;
+﻿using System.Data;
+namespace GenericsHomework;
 
 public class Node<T>
 {
@@ -18,6 +19,10 @@ public class Node<T>
         
         while (current.Next != current)
         {
+            if (current.Value.Equals(value)) {
+                throw new InvalidExpressionException(nameof(value));
+            }
+            
             current = current.Next;
         }
         
@@ -27,6 +32,23 @@ public class Node<T>
     public void Clear()
     {
         Next = this;
+    }
+    
+    public bool Contains(T value)
+    {
+        Node<T> current = this;
+        
+        while (current.Next != current)
+        {
+            if (current.Value.Equals(value))
+            {
+                return true;
+            }
+            
+            current = current.Next;
+        }
+
+        return false;
     }
 
     // public int NumberOfItems()
