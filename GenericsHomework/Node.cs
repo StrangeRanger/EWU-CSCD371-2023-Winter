@@ -1,12 +1,11 @@
-﻿using System;
-namespace GenericsHomework;
+﻿namespace GenericsHomework;
 
 public class Node<T>
 {
     // Must be non-nullable.
     public Node(T value)
     {
-        Value = value;
+        Value = value!;
         Next = this;
     }
     
