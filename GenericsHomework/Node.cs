@@ -15,18 +15,18 @@ public class Node<T>
 
     public void Append(T value)
     {
-        Node<T> current = this;
-        
-        while (current.Next != current)
+        if (Contains(value))
         {
-            if (current.Value.Equals(value)) {
-                throw new DuplicateDataInArrayException(nameof(value));
-            }
-            current = current.Next;
-        }
-        if (current.Value.Equals(value)) {
             throw new DuplicateDataInArrayException(nameof(value));
         }
+        
+        Node<T> current = this;
+
+        while (current.Next != current)
+        {
+            current = current.Next;
+        }
+        
         current.Next = new Node<T>(value);
     }
 
@@ -45,10 +45,12 @@ public class Node<T>
             {
                 return true;
             } 
+            
             if (current.Next == current)
             {
                 return false;
             }
+            
             current = current.Next;
         }
     }
