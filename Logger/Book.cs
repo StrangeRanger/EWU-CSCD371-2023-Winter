@@ -1,4 +1,5 @@
-﻿namespace Logger;
+﻿using System;
+namespace Logger;
 
 public record class Book(string Name, string Author) : Entity(Guid.NewGuid(), Name)
 {

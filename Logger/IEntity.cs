@@ -1,3 +1,4 @@
+using System;
 namespace Logger;
 
 public interface IEntity

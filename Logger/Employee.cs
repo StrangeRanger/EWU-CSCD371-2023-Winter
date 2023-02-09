@@ -1,4 +1,5 @@
-﻿namespace Logger;
+﻿using System;
+namespace Logger;
 
 /**
  * TODO: We weren't sure how to refactor the similarities of the Employee and Student class,

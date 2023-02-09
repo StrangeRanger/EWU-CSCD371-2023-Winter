@@ -1,4 +1,6 @@
-﻿namespace Logger.Tests;
+﻿using System;
+using System.Collections.Generic;
+namespace Logger.Tests;
 
 public class TestLogger : BaseLogger, ILogger
 {
