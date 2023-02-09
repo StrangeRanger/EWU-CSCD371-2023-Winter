@@ -73,7 +73,19 @@ public class NodeTest
         node.Append(40);
         node.Append(20);
     }
-
+    
+    [TestMethod]
+    public void ToString_ReturnsString()
+    {
+        Node<int> node = new Node<int>(19);
+        
+        node.Append(20);
+        node.Append(30);
+        node.Append(40);
+        
+        Assert.AreEqual("{ 19, 20, 30, 40 }", node.ToString());
+    }
+    
     // [TestMethod]
     // public void TestCheckLength()
     // {

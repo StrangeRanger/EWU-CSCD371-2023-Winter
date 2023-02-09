@@ -22,10 +22,11 @@ public class Node<T>
             if (current.Value.Equals(value)) {
                 throw new DuplicateDataInArrayException(nameof(value));
             }
-            
             current = current.Next;
         }
-        
+        if (current.Value.Equals(value)) {
+            throw new DuplicateDataInArrayException(nameof(value));
+        }
         current.Next = new Node<T>(value);
     }
 
@@ -37,18 +38,19 @@ public class Node<T>
     public bool Contains(T value)
     {
         Node<T> current = this;
-        
-        while (current.Next != current)
+
+        while (true)
         {
             if (current.Value.Equals(value))
             {
                 return true;
+            } 
+            if (current.Next == current)
+            {
+                return false;
             }
-            
             current = current.Next;
         }
-
-        return false;
     }
 
     // public int NumberOfItems()
@@ -67,7 +69,17 @@ public class Node<T>
 
     public override string ToString()
     {
-        return base.ToString();
+        string holder = "{ ";
+        Node<T> current = this;
+        
+        while (current.Next != current)
+        {
+            holder += current.Value + ", ";
+            current = current.Next;
+        }
+        
+        holder += current.Value + " }";
+        return holder;
     }
     
 }
