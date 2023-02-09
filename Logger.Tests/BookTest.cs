@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-
+﻿using System;
 namespace Logger.Tests;
 
 [TestClass]
@@ -9,17 +8,21 @@ public class BookTest
     [TestMethod]
     public void Create_Book()
     {
-        var book = new Book("The Hobbit", "J.R.R. Tolkien");
-        Assert.AreEqual("The Hobbit", book.Name);
-        Assert.AreEqual("J.R.R. Tolkien", book.Author);
-        Assert.AreEqual("The Hobbit by J.R.R. Tolkien", book.ToString());
+        FullName fullName = new FullName("J.R.R.", "Tolkien");
+        Book book = new Book(Guid.NewGuid(), fullName, "The Hobbit");
+        
+        Assert.AreEqual("The Hobbit", book.Title);
+        Assert.AreEqual("J.R.R. Tolkien", book.Name);
     }
     
     [TestMethod]
     public void AreSame_Book()
     {
-        var book1 = new Book("The Hobbit", "J.R.R. Tolkien");
-        var book2 = new Book("The Hobbit", "J.R.R. Tolkien");
+        Guid id = Guid.NewGuid();
+        FullName fullName = new FullName("J.R.R.", "Tolkien");
+        Book book1 = new Book(id, fullName, "The Hobbit");
+        Book book2 = new Book(id, fullName, "The Hobbit");
+        
         Assert.IsTrue(book1.Equals(book2));
     }
 }

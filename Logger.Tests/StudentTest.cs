@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-
+﻿using System;
 namespace Logger.Tests;
 
 [TestClass]
@@ -9,7 +7,9 @@ public class StudentTest
     [TestMethod]
     public void Create_Student()
     {
-        Student student = new Student(Guid.NewGuid(), "John Doe");
+        FullName fullName = new FullName("John", "Doe");
+        Student student = new Student(Guid.NewGuid(), fullName);
+        
         Assert.AreEqual("John Doe", student.Name);
         Assert.AreEqual("John", student.FirstName);
         Assert.AreEqual("Doe", student.LastName);
@@ -19,8 +19,10 @@ public class StudentTest
     [TestMethod]
     public void Create_Student_WithMiddleName()
     {
-        Student student = new Student(Guid.NewGuid(), "John Michael Doe");
-        Assert.AreEqual("John Doe Michael", student.Name);
+        FullName fullName = new FullName("John", "Doe", "Michael");
+        Student student = new Student(Guid.NewGuid(), fullName);
+        
+        Assert.AreEqual("John Michael Doe", student.Name);
         Assert.AreEqual("John", student.FirstName);
         Assert.AreEqual("Doe", student.LastName);
         Assert.AreEqual("Michael", student.MiddleName);
@@ -30,8 +32,9 @@ public class StudentTest
     public void AreSame_Student()
     {
         Guid id = Guid.NewGuid();
-        Student student1 = new Student(id, "John Doe");
-        Student student2 = new Student(id, "John Doe");
+        FullName fullName = new FullName("John", "Doe");
+        Student student1 = new Student(id, fullName);
+        Student student2 = new Student(id, fullName);
         Assert.IsTrue(student1.Equals(student2));
     }
     

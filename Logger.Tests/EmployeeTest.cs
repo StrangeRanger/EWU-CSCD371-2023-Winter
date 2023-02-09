@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-
+﻿using System;
 namespace Logger.Tests;
 
 [TestClass]
@@ -9,7 +7,9 @@ public class EmployeeTest
     [TestMethod]
     public void Create_Employee()
     {
-        Employee employee = new Employee(Guid.NewGuid(), "John Doe");
+        FullName fullName = new FullName("John", "Doe");
+        Employee employee = new Employee(Guid.NewGuid(), fullName);
+        
         Assert.AreEqual("John Doe", employee.Name);
         Assert.AreEqual("John", employee.FirstName);
         Assert.AreEqual("Doe", employee.LastName);
@@ -19,19 +19,23 @@ public class EmployeeTest
     [TestMethod]
     public void Create_Employee_WithMiddleName()
     {
-        Employee employee = new Employee(Guid.NewGuid(), "John Doe Michael");
+        FullName fullName = new FullName("John", "Doe", "Michael");
+        Employee employee = new Employee(Guid.NewGuid(), fullName);
+        
         Assert.AreEqual("John Michael Doe", employee.Name);
         Assert.AreEqual("John", employee.FirstName);
-        Assert.AreEqual("Doe", employee.LastName);
         Assert.AreEqual("Michael", employee.MiddleName);
+        Assert.AreEqual("Doe", employee.LastName);
     }
     
     [TestMethod]
     public void AreSame_Employee()
     {
         Guid id = Guid.NewGuid();
-        Employee employee1 = new Employee(id, "John Doe");
-        Employee employee2 = new Employee(id, "John Doe");
+        FullName fullName = new FullName("John", "Doe");
+        Employee employee1 = new Employee(id, fullName);
+        Employee employee2 = new Employee(id, fullName);
+        
         Assert.IsTrue(employee1.Equals(employee2));
     }
 }

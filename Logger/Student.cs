@@ -10,48 +10,37 @@ namespace Logger;
 
 public record class Student : Entity
 {
-    /* ************************ [ Properties Part 1 ] ************************ */
+    public Student(Guid id, FullName fullName) : base(id)
+    {
+        Id = id;
+        EntityFullName = fullName;
+    }
 
-    public FullName EntityFullName { get; set; }
-
+    private FullName EntityFullName { get; }
     public string FirstName
     {
         get { return EntityFullName.FirstName; }
     }
-    
-    public string LastName
-    {
-        get { return EntityFullName.LastName; }
-    }
-    
     public string? MiddleName
     {
         get { return EntityFullName.MiddleName; }
     }
+    public string LastName
+    {
+        get { return EntityFullName.LastName; }
+    }
 
-    /* ************************ [ Properties Part 2 ] ************************ */
-    
     /* Implemented implicitly, because there is no need to implicitly implement this property.
      * Additionally, "'Entity' in explicit interface declaration is not an interface", and it
      * wouldn't make sense to implement the the IEntity interface when we are extending Entity.
      */
-    public sealed override string Name
+    public override string Name
     {
-        get { return EntityFullName.ToString(); }
-        set
+        get
         {
-            string[] array = value.Split(' ');
-            string firstName = array[0];
-            string lastName = array[1];
-            string middleName = array.Length > 2 ? array[2] : null; // TODO: MAKE THIS BETTER
-            EntityFullName = new FullName(firstName, lastName, middleName);
+            return EntityFullName.MiddleName is null
+                ? string.Format($"{EntityFullName.FirstName} {EntityFullName.LastName}")
+                : string.Format($"{EntityFullName.FirstName} {EntityFullName.MiddleName} {EntityFullName.LastName}");
         }
-    }
-    
-    // Constructor.
-    public Student(Guid id, string fullName) : base(id)
-    {
-        Id = id;
-        Name = fullName;
     }
 }
