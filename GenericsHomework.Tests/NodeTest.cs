@@ -86,19 +86,21 @@ public class NodeTest
         Assert.AreEqual("{ 19, 20, 30, 40 }", node.ToString());
     }
     
-    // [TestMethod]
-    // public void TestCheckLength()
-    // {
-    //     Node<int> node = new Node<int>(19);
-    //     
-    //     node.Append(20);
-    //     node.Append(30);
-    //     node.Append(40);
-    //
-    //     Assert.AreEqual(4, node.NumberOfItems());
-    //     node.Clear();
-    //     Assert.AreEqual(1, node.NumberOfItems());
-    //     
-    //     //Assert.AreEqual(node, node.Next);
-    // }
+    // NOTE: Please pay no mind to this method. I was doing some testing and would like to keep
+    // it for future reference.
+    /*[TestMethod]
+    public void TestCheckLength()
+    {
+        Node<int> node = new Node<int>(19);
+        
+        node.Append(20);
+        node.Append(30);
+        node.Append(40);
+    
+        Assert.AreEqual(4, node.NumberOfItems());
+        node.Clear();
+        Assert.AreEqual(1, node.NumberOfItems());
+        
+        //Assert.AreEqual(node, node.Next);
+    }*/
 }
