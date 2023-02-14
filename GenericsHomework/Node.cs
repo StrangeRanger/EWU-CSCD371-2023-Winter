@@ -49,10 +49,11 @@ public class Node<T>
         }
     }
 
-    // NOTE: Please pay no mind to this method. I was doing some testing and would like to keep
-    // it for future reference.
-    /*public int NumberOfItems()
-       {
+    // NOTE: Please pay no mind to this method. I was doing some testing and would like to
+    //       keep it here, for future reference.
+    /*
+    public int NumberOfItemsInArray()
+    {
         Node<T> current = this;
         int count = 1;
 
@@ -63,7 +64,8 @@ public class Node<T>
         }
 
         return count;
-       }*/
+    }
+    */
 
     public override string ToString()
     {

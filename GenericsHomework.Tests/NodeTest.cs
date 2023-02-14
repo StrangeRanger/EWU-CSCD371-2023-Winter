@@ -86,21 +86,23 @@ public class NodeTest
         Assert.AreEqual<string>("{ 19, 20, 30, 40 }", node.ToString());
     }
 
-    // NOTE: Please pay no mind to this method. I was doing some testing and would like to keep
-    // it for future reference.
-    /*[TestMethod]
-       public void TestCheckLength()
-       {
+    // NOTE: Please pay no mind to this method. I was doing some testing and would like to
+    //       keep it here, for future reference.
+    /*
+    [TestMethod]
+    public void Node_CheckLengthBeforeAndAfterClear_AreEqualToFourAndOne()
+    {
         Node<int> node = new Node<int>(19);
 
         node.Append(20);
         node.Append(30);
         node.Append(40);
 
-        Assert.AreEqual(4, node.NumberOfItems());
+        Assert.AreEqual(4, node.NumberOfItemsInArray());
         node.Clear();
-        Assert.AreEqual(1, node.NumberOfItems());
+        Assert.AreEqual(1, node.NumberOfItemsInArray());
 
         //Assert.AreEqual(node, node.Next);
-       }*/
+    }
+    */
 }
