@@ -1,16 +1,16 @@
-﻿namespace GenericsHomework;
+namespace GenericsHomework;
 
 public class Node<T>
 {
     // Must be non-nullable.
     public Node(T value)
     {
-        Value = value!;
+        Value = value !;
         Next = this;
     }
-    
+
     public Node<T> Next { get; private set; }
-    public object Value { get; set; }
+    public T Value { get; set; }
 
     public void Append(T value)
     {
@@ -18,14 +18,11 @@ public class Node<T>
         {
             throw new DuplicateDataInArrayException(nameof(value));
         }
-        
+
         Node<T> current = this;
 
-        while (current.Next != current)
-        {
-            current = current.Next;
-        }
-        
+        while (current.Next != current) { current = current.Next; }
+
         current.Next = new Node<T>(value);
     }
 
@@ -38,23 +35,16 @@ public class Node<T>
     {
         Next = this;
     }
-    
+
     public bool Contains(T value)
     {
         Node<T> current = this;
 
         while (true)
         {
-            if (current.Value.Equals(value))
-            {
-                return true;
-            } 
-            
-            if (current.Next == current)
-            {
-                return false;
-            }
-            
+            if (current.Value != null && current.Value.Equals(value)) { return true; }
+            if (current.Next == current) { return false; }
+
             current = current.Next;
         }
     }
@@ -62,32 +52,32 @@ public class Node<T>
     // NOTE: Please pay no mind to this method. I was doing some testing and would like to keep
     // it for future reference.
     /*public int NumberOfItems()
-    {
+       {
         Node<T> current = this;
         int count = 1;
-        
-        while (current.Next != current) 
+
+        while (current.Next != current)
         {
             current = current.Next;
             count++;
         }
-    
+
         return count;
-    }*/
+       }*/
 
     public override string ToString()
     {
         string holder = "{ ";
         Node<T> current = this;
-        
+
         while (current.Next != current)
         {
             holder += current.Value + ", ";
             current = current.Next;
         }
-        
+
         holder += current.Value + " }";
         return holder;
     }
-    
+
 }
