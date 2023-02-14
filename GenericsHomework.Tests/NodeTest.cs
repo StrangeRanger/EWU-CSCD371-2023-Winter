@@ -47,7 +47,7 @@ public class NodeTest
         node.Append(30);
         node.Append(40);
 
-        Assert.IsTrue(node.Contains(30));
+        Assert.IsTrue(node.Exists(30));
     }
 
     [TestMethod]
@@ -59,7 +59,7 @@ public class NodeTest
         node.Append(30);
         node.Append(40);
 
-        Assert.IsFalse(node.Contains(50));
+        Assert.IsFalse(node.Exists(50));
     }
 
     [TestMethod]

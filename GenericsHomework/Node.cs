@@ -14,7 +14,7 @@ public class Node<T>
 
     public void Append(T value)
     {
-        if (Contains(value))
+        if (Exists(value))
         {
             throw new DuplicateDataInArrayException(nameof(value));
         }
@@ -36,7 +36,7 @@ public class Node<T>
         Next = this;
     }
 
-    public bool Contains(T value)
+    public bool Exists(T value)
     {
         Node<T> current = this;
 
