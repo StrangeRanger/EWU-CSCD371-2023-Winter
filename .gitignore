@@ -353,4 +353,6 @@ MigrationBackup/
 *.lutconfig
 
 # Others
-.idea
+.DS_Store
+.idea/
+
