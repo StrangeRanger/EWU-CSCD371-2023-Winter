@@ -351,3 +351,8 @@ MigrationBackup/
 
 # Live unit testing files.
 *.lutconfig
+
+# Other
+.DS_Store
+.idea/
+
