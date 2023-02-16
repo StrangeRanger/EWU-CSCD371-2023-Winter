@@ -25,7 +25,8 @@ public class Calculator<TKey, TValue> where TKey : struct where TValue : struct
         string[] equationParts = equation.Split(' ');
         TKey firstNumber = (TKey)Convert.ChangeType(equationParts[0], typeof(TKey));
         TKey secondNumber = (TKey)Convert.ChangeType(equationParts[2], typeof(TKey));
-        TValue output = (TValue)Convert.ChangeType(MathematicalOperations[equationParts[1]], typeof(TValue));
+        TKey operation = (TKey)Convert.ChangeType(equationParts[1], typeof(TKey));
+        TValue output = (TValue)Convert.ChangeType(MathematicalOperations[operation], typeof(TValue));
     }
 
     static TValue Add (TKey a, TKey b)
