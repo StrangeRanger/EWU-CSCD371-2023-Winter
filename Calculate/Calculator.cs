@@ -2,7 +2,7 @@ namespace Calculate;
 
 public class Calculator
 {
-    public static IReadOnlyDictionary<string,Delegate> MathematicalOperations { get; } = new Dictionary<string,Delegate>
+    public static IReadOnlyDictionary<char,Delegate> MathematicalOperations { get; } = new Dictionary<string,Delegate>
     {
         {"+", Calculator.Add},
         {"-", Calculator.Subtract},

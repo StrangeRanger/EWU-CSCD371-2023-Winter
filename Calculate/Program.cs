@@ -16,7 +16,7 @@ public class Program
         var parts = input.Split(' ');
         var a = double.Parse(parts[0]);
         var b = double.Parse(parts[2]);
-        var operation = parts[1];
+        char operation = parts[1].ToCharArray()[0];
         var result = Calculator.MathematicalOperations[operation].DynamicInvoke(a, b);
         return result.ToString();
     }
