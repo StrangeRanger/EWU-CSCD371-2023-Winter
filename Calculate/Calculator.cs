@@ -1,37 +1,24 @@
 namespace Calculate;
 
-public class Calculator<TValue>
+public class Calculator
 {
-
-    public IReadOnlyDictionary<char, TValue> MathematicalOperations { get; } = new Dictionary<char, TValue>();
+    public delegate double KeySelector(double a, double b);
     
-    public TValue Add(TValue a, TValue b)
+    public static double Add(double a, double b)
     {
         return a + b;
     }
-    
-    public TValue Subtract(TValue a, TValue b)
+    public static double Subtract(double a, double b)
     {
         return a - b;
     }
-
-    public TValue Multiply(TValue a, TValue b)
+    public static double Multiply(double a, double b)
     {
         return a * b;
     }
-
-    public TValue Divide(TValue a, TValue b)
+    public static double Divide(double a, double b)
     {
-        int.TryParse(a, b);
         return a / b;
     }
 
-    
-    
-    public void TryCalculate()
-    {
-        
-    }
-    
-    
 }
