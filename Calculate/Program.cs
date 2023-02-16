@@ -1,6 +1,6 @@
 namespace Calculate;
 
-public class TmpMain
+public class Program
 {
     public static void Main()
     {
