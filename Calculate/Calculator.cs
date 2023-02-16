@@ -2,12 +2,12 @@ namespace Calculate;
 
 public class Calculator
 {
-    public static IReadOnlyDictionary<char,Delegate> MathematicalOperations { get; } = new Dictionary<string,Delegate>
+    public static IReadOnlyDictionary<char,Delegate> MathematicalOperations { get; } = new Dictionary<char,Delegate>
     {
-        {"+", Calculator.Add},
-        {"-", Calculator.Subtract},
-        {"*", Calculator.Multiply},
-        {"/", Calculator.Divide}
+        {'+', Calculator.Add},
+        {'-', Calculator.Subtract},
+        {'*', Calculator.Multiply},
+        {'/', Calculator.Divide}
     };
     
     public delegate double KeySelector(double a, double b);
