@@ -19,7 +19,7 @@ public class Calculator<TKey, TValue> where TKey : struct where TValue : struct
         WriteLine = new LineWriter();
     }
     
-    public void calculate()
+    public TValue calculate()
     {
         string equation = ReadLine.readLine();
         string[] equationParts = equation.Split(' ');
@@ -27,6 +27,7 @@ public class Calculator<TKey, TValue> where TKey : struct where TValue : struct
         TKey secondNumber = (TKey)Convert.ChangeType(equationParts[2], typeof(TKey));
         TKey operation = (TKey)Convert.ChangeType(equationParts[1], typeof(TKey));
         TValue output = (TValue)Convert.ChangeType(MathematicalOperations[operation], typeof(TValue));
+        return output;
     }
 
     static TValue Add (TKey a, TKey b)
