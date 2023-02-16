@@ -7,9 +7,18 @@ public class Program
     public static void Main()
     {
         Console.WriteLine("Hello World!");
-        CalculatorUser calculatorUser = new CalculatorUser();
-        string equation = "1 + 2";
-        Console.WriteLine(equation+" = "+calculatorUser.Calculate(equation));
+        string equation = "72 - 8";
+        Console.WriteLine(equation+" = "+Calculate(equation));
+    }
+    
+    public static string Calculate(string input)
+    {
+        var parts = input.Split(' ');
+        var a = double.Parse(parts[0]);
+        var b = double.Parse(parts[2]);
+        var operation = parts[1];
+        var result = Calculator.MathematicalOperations[operation].DynamicInvoke(a, b);
+        return result.ToString();
     }
     
 }
