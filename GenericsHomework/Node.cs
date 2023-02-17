@@ -27,9 +27,9 @@ public class Node<T>
     }
 
     /**
-     * When we clear the list, specifying that the Next property for the first node in the
-     * list now refers to itself, all previous references to the other nodes in the list will
-     * be dropped, and the garbage collector will be able to reclaim the memory used by them.
+     * When we clear the list, specifying that the Next property for the first node in the list now
+     * refers to itself, all previous references to the other nodes in the list will be dropped, and
+     * the garbage collector will be able to reclaim the memory used by them.
      */
     public void Clear()
     {
@@ -69,17 +69,7 @@ public class Node<T>
 
     public override string ToString()
     {
-        string holder = "{ ";
-        Node<T> current = this;
-
-        while (current.Next != current)
-        {
-            holder += current.Value + ", ";
-            current = current.Next;
-        }
-
-        holder += current.Value + " }";
-        return holder;
+        return Value is not null ? Value.ToString()! : string.Empty;
     }
 
 }
