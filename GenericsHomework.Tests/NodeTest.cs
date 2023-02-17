@@ -9,6 +9,13 @@ public class NodeTest
         Node<int> node = new Node<int>(19);
         Assert.IsNotNull(node.Next);
     }
+    
+    [TestMethod]
+    [ExpectedException(typeof(NullReferenceException))]
+    public void Node_Append_ThrowsNullReferenceException()
+    {
+        Node<object> node = new Node<object>(null!);
+    }
 
     [TestMethod]
     public void NextNode_Append_AreEqualValue()
