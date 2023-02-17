@@ -2,7 +2,6 @@ namespace GenericsHomework;
 
 public class Node<T>
 {
-    // Must be non-nullable.
     public Node(T value)
     {
         Value = value ?? throw new NullReferenceException(nameof(value));
