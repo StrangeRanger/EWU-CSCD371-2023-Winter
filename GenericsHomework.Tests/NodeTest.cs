@@ -9,13 +9,6 @@ public class NodeTest
         Node<int> node = new Node<int>(19);
         Assert.IsNotNull(node.Next);
     }
-    
-    [TestMethod]
-    [ExpectedException(typeof(NullReferenceException))]
-    public void Node_Append_ThrowsNullReferenceException()
-    {
-        Node<object> node = new Node<object>(null!);
-    }
 
     [TestMethod]
     public void NextNode_Append_AreEqualValue()
@@ -30,6 +23,13 @@ public class NodeTest
         Assert.AreEqual<int>(30, node.Next.Next.Value);
         Assert.AreEqual<int>(40, node.Next.Next.Next.Value);
     }
+    
+    [TestMethod]
+    [ExpectedException(typeof(NullReferenceException))]
+    public void Node_InstantiateNullNode_ThrowNullReferenceException()
+    {
+        Node<object> node = new Node<object>(null!);
+    }
 
     [TestMethod]
     public void Node_Clear_NextNodeIsNode()
@@ -42,7 +42,7 @@ public class NodeTest
 
         node.Clear();
 
-        Assert.AreEqual<Node<int> >(node, node.Next);
+        Assert.AreEqual<Node<int>>(node, node.Next);
     }
 
     [TestMethod]
@@ -90,7 +90,10 @@ public class NodeTest
         node.Append(30);
         node.Append(40);
 
-        Assert.AreEqual<string>("{ 19, 20, 30, 40 }", node.ToString());
+        Assert.AreEqual<string>("19", node.ToString());
+        Assert.AreEqual<string>("20", node.Next.ToString());
+        Assert.AreEqual<string>("30", node.Next.Next.ToString());
+        Assert.AreEqual<string>("40", node.Next.Next.Next.ToString());
     }
 
     // NOTE: Please pay no mind to this method. I was doing some testing and would like to
