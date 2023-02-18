@@ -2,16 +2,15 @@ namespace Calculate;
 
 public class Calculator
 {
-    public static IReadOnlyDictionary<char,MyMath> MathematicalOperations { get; } = new Dictionary<char,MyMath>
-    {
-        {'+', Add},
-        {'-', Subtract},
-        {'*', Multiply},
-        {'/', Divide}
+    public static IReadOnlyDictionary<char, Func<double, double, double> > MathematicalOperations {
+        get;
+    } = new Dictionary<char, Func<double, double, double> > {
+        { '+', Add },
+        { '-', Subtract },
+        { '*', Multiply },
+        { '/', Divide }
     };
 
-    public delegate double MyMath (double a, double b);
-    
     public static double Add(double a, double b)
     {
         return a + b;
@@ -56,7 +55,7 @@ public void Calculate(WriteDelegate writeLine, ReadDelegate readLine)
             char operation = parts[1].ToCharArray()[0];
             double result;
 
-            MyMath myDelegate = MathematicalOperations[operation];
+            Func<double, double, double> myDelegate = MathematicalOperations[operation];
             result = myDelegate(a, b);
 
             writeLine(result.ToString());
@@ -71,7 +70,8 @@ public void Calculate(WriteDelegate writeLine, ReadDelegate readLine)
             double a = double.Parse(parts[0]);
             double b = double.Parse(parts[2]);
             char operation = parts[1].ToCharArray()[0];
-        } catch (Exception e)
+        } 
+        catch (Exception e)
         {
             Console.WriteLine("There was an error with your problem: " + e.Message);
             return false;
