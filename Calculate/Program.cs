@@ -14,7 +14,7 @@ public class Program
     public void run()
     {
         Calculator calculator = new();
-        calculator.Calculate(WriteLine, ReadLine);
+        calculator.TryCalculate(WriteLine, ReadLine);
     }
 
 }
