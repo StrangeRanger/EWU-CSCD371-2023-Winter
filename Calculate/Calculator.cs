@@ -40,14 +40,23 @@ public class Calculator
         Console.WriteLine(line);
     }
     
-public void Calculate(WriteDelegate writeLine, ReadDelegate readLine)
+    public void TryCalculate(WriteDelegate writeLine, ReadDelegate readLine)
     {
-        string input = readLine();
-        if (!input.Contains(" "))
+        string? input = readLine();
+
+        // TODO: ???
+        if (input is null)
+        {
+            throw new ArgumentException("No input was provided");
+        }
+            
+        // TODO: ???
+        if (! input.Contains(' ')) 
         {
             throw new ArgumentException("Input must contain a spaces");
         }
-        if (TryCalculate(input))
+            
+        try
         {
             string[] parts = input.Split(' ');;
             double a = double.Parse(parts[0]);
@@ -59,24 +68,10 @@ public void Calculate(WriteDelegate writeLine, ReadDelegate readLine)
             result = myDelegate(a, b);
 
             writeLine(result.ToString());
-        } 
-    }
-    
-    public Boolean TryCalculate(string input)
-    {
-        try
-        {
-            string[] parts = input.Split(' ');;
-            double a = double.Parse(parts[0]);
-            double b = double.Parse(parts[2]);
-            char operation = parts[1].ToCharArray()[0];
-        } 
-        catch (Exception e)
-        {
-            Console.WriteLine("There was an error with your problem: " + e.Message);
-            return false;
         }
-        return true;
+        catch (IndexOutOfRangeException e)
+        {
+            throw new IndexOutOfRangeException("An error occured while parsing your input: " + e.Message);
+        }
     }
-
 }
