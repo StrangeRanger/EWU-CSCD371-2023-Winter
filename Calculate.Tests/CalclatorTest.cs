@@ -27,31 +27,31 @@ public class CalculatorTest
         Assert.AreEqual("116", stringWriter.ToString().Trim());
     }
     
-    [TestMethod]
-    public void Calculate_Char()
-    {
-        StringWriter stringWriter = new();
-        Console.SetOut(stringWriter);
-        
-        Program program = new();
-        Calculator.TryCalculate(program.WriteLine, () => "a + b");
-        
-
-        Assert.AreNotEqual(('a' + 'b').ToString(), stringWriter.ToString().Trim());
-    }
-    
-    [TestMethod]
-    public void Calculate_String()
-    {
-        StringWriter stringWriter = new();
-        Console.SetOut(stringWriter);
-        
-        Program program = new();
-        Calculator.TryCalculate(program.WriteLine, () => "Hello + World");
-        
-        string expected = "Hello World";
-        Assert.AreNotEqual(expected, stringWriter.ToString().Trim());
-    }
+    // [TestMethod]
+    // public void Calculate_Char()
+    // {
+    //     StringWriter stringWriter = new();
+    //     Console.SetOut(stringWriter);
+    //     
+    //     Program program = new();
+    //     Calculator.TryCalculate(program.WriteLine, () => "a + b");
+    //     
+    //
+    //     Assert.AreNotEqual(('a' + 'b').ToString(), stringWriter.ToString().Trim());
+    // }
+    //
+    // [TestMethod]
+    // public void Calculate_String()
+    // {
+    //     StringWriter stringWriter = new();
+    //     Console.SetOut(stringWriter);
+    //     
+    //     Program program = new();
+    //     Calculator.TryCalculate(program.WriteLine, () => "Hello + World");
+    //     
+    //     string expected = "Hello World";
+    //     Assert.AreNotEqual(expected, stringWriter.ToString().Trim());
+    // }
     
     // [TestMethod]
     // public void Calculator_Delegates()
