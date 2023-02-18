@@ -40,7 +40,7 @@ public class Calculator
         Console.WriteLine(line);
     }
     
-    public void TryCalculate(WriteDelegate writeLine, ReadDelegate readLine)
+    public static void TryCalculate(WriteDelegate writeLine, ReadDelegate readLine)
     {
         string? input = readLine();
 

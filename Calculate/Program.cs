@@ -13,8 +13,7 @@ public class Program
     
     public void run()
     {
-        Calculator calculator = new();
-        calculator.TryCalculate(WriteLine, ReadLine);
+        Calculator.TryCalculate(WriteLine, ReadLine);
     }
 
 }

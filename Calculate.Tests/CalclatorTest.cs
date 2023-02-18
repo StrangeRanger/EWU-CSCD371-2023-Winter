@@ -9,8 +9,7 @@ public class CalculatorTest
         StringWriter stringWriter = new();
         Console.SetOut(stringWriter);
         
-        Calculator calculator = new();
-        calculator.TryCalculate(Calculator.WriteLine, () => "15 + 100");
+        Calculator.TryCalculate(Calculator.WriteLine, () => "15 + 100");
         
         string expected = "115";
         Assert.AreEqual(expected, stringWriter.ToString().Trim());
@@ -22,8 +21,7 @@ public class CalculatorTest
         StringWriter stringWriter = new();
         Console.SetOut(stringWriter);
         
-        Calculator calculator = new();
-        calculator.TryCalculate(Calculator.WriteLine, () => "15.75 + 100.25");
+        Calculator.TryCalculate(Calculator.WriteLine, () => "15.75 + 100.25");
         
         string expected = "116";
         Assert.AreEqual(expected, stringWriter.ToString().Trim());
@@ -35,8 +33,7 @@ public class CalculatorTest
         StringWriter stringWriter = new();
         Console.SetOut(stringWriter);
         
-        Calculator calculator = new();
-        calculator.TryCalculate(Calculator.WriteLine, () => "a + b");
+        Calculator.TryCalculate(Calculator.WriteLine, () => "a + b");
         
         string expected = ('a' + 'b').ToString();
         Assert.AreNotEqual(expected, stringWriter.ToString().Trim());
@@ -48,8 +45,7 @@ public class CalculatorTest
         StringWriter stringWriter = new();
         Console.SetOut(stringWriter);
         
-        Calculator calculator = new();
-        calculator.TryCalculate(Calculator.WriteLine, () => "Hello + World");
+        Calculator.TryCalculate(Calculator.WriteLine, () => "Hello + World");
         
         string expected = "Hello World";
         Assert.AreNotEqual(expected, stringWriter.ToString().Trim());
