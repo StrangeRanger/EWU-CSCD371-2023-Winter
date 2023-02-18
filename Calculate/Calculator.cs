@@ -2,7 +2,7 @@ namespace Calculate;
 
 public class Calculator
 {
-    public static IReadOnlyDictionary<char, Func<double, double, double> > MathematicalOperations {
+    public IReadOnlyDictionary<char, Func<double, double, double> > MathematicalOperations {
         get;
     } = new Dictionary<char, Func<double, double, double> > {
         { '+', Add },
@@ -28,11 +28,10 @@ public class Calculator
         return a / b;
     }
 
-    public static void TryCalculate(Action<string> writeLine, Func<string?> readLine)
+    public void TryCalculate(Action<string> writeLine, Func<string?> readLine)
     {
         string? input = readLine();
 
-        // TODO: ???
         if (input is null)
         {
             throw new ArgumentException("No input was provided");
@@ -50,10 +49,8 @@ public class Calculator
             double a = double.Parse(parts[0]);
             double b = double.Parse(parts[2]);
             char operation = parts[1].ToCharArray()[0];
-            double result;
-
             Func<double, double, double> myDelegate = MathematicalOperations[operation];
-            result = myDelegate(a, b);
+            double result = myDelegate(a, b);
 
             writeLine(result.ToString());
         }
