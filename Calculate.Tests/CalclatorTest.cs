@@ -8,11 +8,11 @@ public class CalculatorTest
     {
         StringWriter stringWriter = new();
         Console.SetOut(stringWriter);
-        
-        Calculator.TryCalculate(Calculator.WriteLine, () => "15 + 100");
-        
-        string expected = "115";
-        Assert.AreEqual(expected, stringWriter.ToString().Trim());
+
+        Program program = new();
+        Calculator.TryCalculate(program.WriteLine, () => "15 + 100");
+
+        Assert.AreEqual("115", stringWriter.ToString().Trim());
     }
     
     [TestMethod]
@@ -21,10 +21,10 @@ public class CalculatorTest
         StringWriter stringWriter = new();
         Console.SetOut(stringWriter);
         
-        Calculator.TryCalculate(Calculator.WriteLine, () => "15.75 + 100.25");
-        
-        string expected = "116";
-        Assert.AreEqual(expected, stringWriter.ToString().Trim());
+        Program program = new();
+        Calculator.TryCalculate(program.WriteLine, () => "15.75 + 100.25");
+
+        Assert.AreEqual("116", stringWriter.ToString().Trim());
     }
     
     [TestMethod]
@@ -33,10 +33,11 @@ public class CalculatorTest
         StringWriter stringWriter = new();
         Console.SetOut(stringWriter);
         
-        Calculator.TryCalculate(Calculator.WriteLine, () => "a + b");
+        Program program = new();
+        Calculator.TryCalculate(program.WriteLine, () => "a + b");
         
-        string expected = ('a' + 'b').ToString();
-        Assert.AreNotEqual(expected, stringWriter.ToString().Trim());
+
+        Assert.AreNotEqual(('a' + 'b').ToString(), stringWriter.ToString().Trim());
     }
     
     [TestMethod]
@@ -45,7 +46,8 @@ public class CalculatorTest
         StringWriter stringWriter = new();
         Console.SetOut(stringWriter);
         
-        Calculator.TryCalculate(Calculator.WriteLine, () => "Hello + World");
+        Program program = new();
+        Calculator.TryCalculate(program.WriteLine, () => "Hello + World");
         
         string expected = "Hello World";
         Assert.AreNotEqual(expected, stringWriter.ToString().Trim());

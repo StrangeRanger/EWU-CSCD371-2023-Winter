@@ -5,6 +5,7 @@ public class ProgramMain
     public static void Main()
     {
         Program program = new();
-        program.run();
+        Calculator.TryCalculate(program.WriteLine, program.ReadLine);
+
     }
 }

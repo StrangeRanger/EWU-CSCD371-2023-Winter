@@ -28,19 +28,7 @@ public class Calculator
         return a / b;
     }
 
-    public delegate string ReadDelegate();
-    public delegate void WriteDelegate(string line);
-    
-    public static string ReadLine()
-    {
-        return Console.ReadLine()!;
-    }
-    public static void WriteLine(string line)
-    {
-        Console.WriteLine(line);
-    }
-    
-    public static void TryCalculate(WriteDelegate writeLine, ReadDelegate readLine)
+    public static void TryCalculate(Action<string> writeLine, Func<string?> readLine)
     {
         string? input = readLine();
 

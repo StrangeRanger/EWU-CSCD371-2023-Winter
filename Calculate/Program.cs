@@ -2,18 +2,6 @@ namespace Calculate;
 
 public class Program
 {
-    private  Calculator.WriteDelegate WriteLine { get; init; }
-    private Calculator.ReadDelegate ReadLine { get; init; }
-    
-    public Program()
-    {
-        WriteLine = Calculator.WriteLine;
-        ReadLine = Calculator.ReadLine;
-    }
-    
-    public void run()
-    {
-        Calculator.TryCalculate(WriteLine, ReadLine);
-    }
-
+    public Action<string> WriteLine { get; init; } = (string s) => Console.WriteLine(s);
+    public Func<string?> ReadLine { get; init; } = () => Console.ReadLine();
 }
