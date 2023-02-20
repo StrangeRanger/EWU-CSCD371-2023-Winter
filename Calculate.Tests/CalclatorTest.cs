@@ -69,11 +69,10 @@ public class CalculatorTest
     }
 
     [TestMethod]
-    public void Calculator_TryCalculate_AreEqualIfInputIsNull()
+    [ExpectedException(typeof(ArgumentNullException))]
+    public void Calculator_TryCalculate_ArgumentNullException()
     {
-        bool actual = Calculator.TryCalculate(() => null);
-
-        Assert.AreEqual(false, actual);
+        _ = Calculator.TryCalculate(() => null);
     }
     
     [TestMethod]
