@@ -2,81 +2,82 @@ namespace Calculate;
 
 public class Calculator
 {
-    public static IReadOnlyDictionary<char,MyMath> MathematicalOperations { get; } = new Dictionary<char,MyMath>
-    {
-        {'+', Add},
-        {'-', Subtract},
-        {'*', Multiply},
-        {'/', Divide}
+    public IReadOnlyDictionary<char, Func<int, int, double> > MathematicalOperations {
+        get;
+    } = new Dictionary<char, Func<int, int, double> > {
+        { '+', Add },
+        { '-', Subtract },
+        { '*', Multiply },
+        { '/', Divide }
     };
 
-    public delegate double MyMath (double a, double b);
-    
-    public static double Add(double a, double b)
+    public static double Add(int a, int b)
     {
         return a + b;
     }
-    public static double Subtract(double a, double b)
+
+    public static double Subtract(int a, int b)
     {
         return a - b;
     }
-    public static double Multiply(double a, double b)
+
+    public static double Multiply(int a, int b)
     {
         return a * b;
     }
-    public static double Divide(double a, double b)
+
+    public static double Divide(int a, int b)
     {
-        return a / b;
+        return (double) a / b;
     }
 
-    public delegate string ReadDelegate();
-    public delegate void WriteDelegate(string line);
-    
-    public static string ReadLine()
+    // TODO: Should probably be re-written...
+    public bool TryCalculate(Func<string> readLine)
     {
-        return Console.ReadLine()!;
-    }
-    public static void WriteLine(string line)
-    {
-        Console.WriteLine(line);
-    }
-    
-public void Calculate(WriteDelegate writeLine, ReadDelegate readLine)
-    {
-        string input = readLine();
-        if (!input.Contains(" "))
-        {
-            throw new ArgumentException("Input must contain a spaces");
-        }
-        if (TryCalculate(input))
-        {
-            string[] parts = input.Split(' ');;
-            double a = double.Parse(parts[0]);
-            double b = double.Parse(parts[2]);
-            char operation = parts[1].ToCharArray()[0];
-            double result;
-
-            MyMath myDelegate = MathematicalOperations[operation];
-            result = myDelegate(a, b);
-
-            writeLine(result.ToString());
-        } 
-    }
-    
-    public Boolean TryCalculate(string input)
-    {
+        // TODO: ???
+        string input = readLine() ?? throw new ArgumentNullException(typeof(string).ToString());
+        string[] parts = input.Split(' ');
+        
         try
         {
-            string[] parts = input.Split(' ');;
-            double a = double.Parse(parts[0]);
-            double b = double.Parse(parts[2]);
+            _ = int.Parse(parts[0]);
+            _ = int.Parse(parts[2]);
             char operation = parts[1].ToCharArray()[0];
-        } catch (Exception e)
+            
+            if (! MathematicalOperations.ContainsKey(operation)) { return false; }
+        } 
+        catch (Exception e) when (e is IndexOutOfRangeException or FormatException)
         {
-            Console.WriteLine("There was an error with your problem: " + e.Message);
             return false;
         }
+
         return true;
     }
+    
+    // TODO: Should probably be re-written...
+    public void Calculate(Action<string> writeLine, Func<string?> readLine)
+    {
+        // TODO: ???
+        string input = readLine() ?? throw new ArgumentNullException(typeof(string).ToString());
+        string[] parts = input.Split(' ');
+        int a, b;
+        char operation;
 
+        try
+        {
+            a = int.Parse(parts[0]);
+            b = int.Parse(parts[2]);
+            operation = parts[1].ToCharArray()[0];
+        } 
+        catch (Exception e) when (e is IndexOutOfRangeException or FormatException)
+        {
+            writeLine("Invalid input");
+            return;
+        }
+        
+        Func<int, int, double> myDelegate = MathematicalOperations[operation];
+        double result = myDelegate(a, b);
+
+        writeLine(result.ToString());
+    }
 }

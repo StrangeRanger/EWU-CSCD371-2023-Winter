@@ -3,69 +3,118 @@ namespace Calculate.Tests;
 [TestClass]
 public class CalculatorTest
 {
-    [TestMethod]
-    public void Calculate_Int()
+    private Calculator Calculator { get; set; }
+
+    [TestInitialize]
+    public void TestInitialize()
     {
+        TestCleanup();
+        Calculator = new Calculator();
+    }
+
+    [TestCleanup]
+    public void TestCleanup()
+    {
+        Calculator = null;
+    }
+    
+    [TestMethod]
+    [DataRow("15 + 100", true)]
+    [DataRow("15 - 100", true)]
+    [DataRow("15 * 100", true)]
+    [DataRow("15 / 100", true)]
+    [DataRow("15 : 100", false)]
+    public void Calculator_TryCalculate_AreEqualIfValidOperator(string userInput, bool expected)
+    {
+        bool actual = Calculator.TryCalculate(() => userInput);
+
+        Assert.AreEqual(expected, actual);
+        
+    }
+    
+    [TestMethod]
+    [DataRow("15 + 100", true)]
+    [DataRow("15.5 + 100.5", false)]
+    [DataRow("Hello + World", false)]
+    [DataRow("a + b", false)]
+    public void Calculator_TryCalculate_AreEqualIfInputIsOfTypeInt(string userInput, bool expected)
+    {
+        bool actual = Calculator.TryCalculate(() => userInput);
+
+        Assert.AreEqual(expected, actual);
+        
+    }
+    
+    [TestMethod]
+    [DataRow("15 +100", false)]
+    [DataRow("15- 100", false)]
+    [DataRow("15*100", false)]
+    public void Calculator_TryCalculate_AreEqualIfCorrectFormat(string userInput, bool expected)
+    {
+        bool actual = Calculator.TryCalculate(() => userInput);
+
+        Assert.AreEqual(expected, actual);
+    }
+    
+    [TestMethod]
+    [DataRow("15 +", false)]
+    [DataRow("15-", false)]
+    [DataRow("* 100", false)]
+    [DataRow("/100", false)]
+    public void Calculator_TryCalculate_AreEqualIfInputIsTooShort(string userInput, bool expected)
+    {
+        bool actual = Calculator.TryCalculate(() => userInput);
+
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void Calculator_TryCalculate_AreEqualIfInputIsNull()
+    {
+        bool actual = Calculator.TryCalculate(() => null);
+
+        Assert.AreEqual(false, actual);
+    }
+    
+    [TestMethod]
+    public void Calculator_TryCalculate_AreEqualIfInputIsEmpty()
+    {
+        bool actual = Calculator.TryCalculate(() => "");
+
+        Assert.AreEqual(false, actual);
+    }
+    
+    [TestMethod]
+    public void Calculator_TryCalculate_AreEqualIfInputIsWhiteSpace()
+    {
+        bool actual = Calculator.TryCalculate(() => " ");
+
+        Assert.AreEqual(false, actual);
+    }
+
+    [TestMethod]
+    [DataRow("15 + 100", "115")]
+    [DataRow("15 - 100", "-85")]
+    [DataRow("15 * 100", "1500")]
+    [DataRow("15 / 100", "0.15")]
+    public void Calculator_Calculate_AreEqualAllOperators(string userInput, string expected)
+    {
+        Program program = new();
         StringWriter stringWriter = new();
         Console.SetOut(stringWriter);
-        Calculator calculator = new();
-        calculator.Calculate(Calculator.WriteLine, () => "15 + 100");
-        string expected = "115";
+
+        Calculator.Calculate(program.WriteLine, () => userInput);
+
         Assert.AreEqual(expected, stringWriter.ToString().Trim());
     }
-    
+
     [TestMethod]
-    public void Calculate_Double()
+    public void Calculator_MathematicalOperations()
     {
-        StringWriter stringWriter = new();
-        Console.SetOut(stringWriter);
-        Calculator calculator = new();
-        calculator.Calculate(Calculator.WriteLine, () => "15.75 + 100.25");
-        string expected = "116";
-        Assert.AreEqual(expected, stringWriter.ToString().Trim());
+        Assert.AreEqual(5, Calculator.MathematicalOperations['+'](2, 3));
+        Assert.AreEqual(-1, Calculator.MathematicalOperations['-'](2, 3));
+        Assert.AreEqual(6, Calculator.MathematicalOperations['*'](2, 3));
+        Assert.AreEqual(2, Calculator.MathematicalOperations['/'](6, 3));
     }
     
-    [TestMethod]
-    public void Calculate_Char()
-    {
-        StringWriter stringWriter = new();
-        Console.SetOut(stringWriter);
-        Calculator calculator = new();
-        calculator.Calculate(Calculator.WriteLine, () => "a + b");
-        string expected = ('a' + 'b').ToString();
-        Assert.AreNotEqual(expected, stringWriter.ToString().Trim());
-    }
-    
-    [TestMethod]
-    public void Calculate_String()
-    {
-        StringWriter stringWriter = new();
-        Console.SetOut(stringWriter);
-        Calculator calculator = new();
-        calculator.Calculate(Calculator.WriteLine, () => "Hello +World");
-        string expected = "Hello World";
-        Assert.AreNotEqual(expected, stringWriter.ToString().Trim());
-    }
-    
-    [TestMethod]
-    public void Calculator_Delegates()
-    {
-        Calculator.MyMath myMath = Calculator.Add;
-        Assert.AreEqual(5, myMath(2, 3));
-        myMath = Calculator.Subtract;
-        Assert.AreEqual(-1, myMath(2, 3));
-        myMath = Calculator.Multiply;
-        Assert.AreEqual(6, myMath(2, 3));
-        myMath = Calculator.Divide;
-        Assert.AreEqual(2, myMath(6, 3));
-        
-        StringWriter stringWriter = new();
-        Console.SetOut(stringWriter);
-        Calculator.WriteDelegate writeDelegate = Calculator.WriteLine;
-        writeDelegate("Hello World");
-        Assert.AreEqual("Hello World", stringWriter.ToString().Trim());
-        
-        Calculator.ReadDelegate readDelegate = () => "Hello World";
-        Assert.AreEqual("Hello World", readDelegate());
-    }
 }
