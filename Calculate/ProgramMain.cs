@@ -7,7 +7,7 @@ public class ProgramMain
         Program program = new();
         Calculator calculator = new();
         
-        calculator.TryCalculate(program.WriteLine, program.ReadLine);
+        calculator.Calculate(program.WriteLine, program.ReadLine);
 
     }
 }
