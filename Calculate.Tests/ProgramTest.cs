@@ -3,13 +3,13 @@ namespace Calculate.Tests;
 [TestClass]
 public class ProgramTest
 {
-    private Program Program { get; set; }
+    private ProgramBase Program { get; set; }
 
     [TestInitialize]
     public void TestInitialize()
     {
         TestCleanup();
-        Program = new Program();
+        Program = new ProgramBase();
     }
 
     [TestCleanup]
@@ -26,7 +26,18 @@ public class ProgramTest
         
         Program.WriteLine("Hello World");
 
-        Assert.AreEqual("Hello World", stringWriter.ToString().Trim());
+        Assert.AreEqual<string>("Hello World", stringWriter.ToString().Trim());
+    }
+
+    [TestMethod]
+    public void Program_WriteLinePerformInitSetter_AreEqual()
+    {
+        ProgramBase customProgram = new()
+        {
+            WriteLine = s => Assert.AreEqual<string>("Hello World", s)
+        };
+        
+        customProgram.WriteLine("Hello World");
     }
     
     [TestMethod]
@@ -37,6 +48,19 @@ public class ProgramTest
         
         string? actual = Program.ReadLine();
 
-        Assert.AreEqual("Hello World", actual);
+        Assert.AreEqual<string>("Hello World", actual);
+    }
+    
+    [TestMethod]
+    public void Program_ReadLinePerformInitSetter_AreEqual()
+    {
+        ProgramBase customProgram = new()
+        {
+            ReadLine = () => "Hello World"
+        };
+        
+        string? actual = customProgram.ReadLine();
+
+        Assert.AreEqual<string>("Hello World", actual);
     }
 }

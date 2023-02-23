@@ -28,7 +28,7 @@ public class CalculatorTest
     {
         bool actual = Calculator.TryCalculate(() => userInput);
 
-        Assert.AreEqual(expected, actual);
+        Assert.AreEqual<bool>(expected, actual);
         
     }
     
@@ -41,7 +41,7 @@ public class CalculatorTest
     {
         bool actual = Calculator.TryCalculate(() => userInput);
 
-        Assert.AreEqual(expected, actual);
+        Assert.AreEqual<bool>(expected, actual);
         
     }
     
@@ -53,7 +53,7 @@ public class CalculatorTest
     {
         bool actual = Calculator.TryCalculate(() => userInput);
 
-        Assert.AreEqual(expected, actual);
+        Assert.AreEqual<bool>(expected, actual);
     }
     
     [TestMethod]
@@ -65,7 +65,7 @@ public class CalculatorTest
     {
         bool actual = Calculator.TryCalculate(() => userInput);
 
-        Assert.AreEqual(expected, actual);
+        Assert.AreEqual<bool>(expected, actual);
     }
 
     [TestMethod]
@@ -80,7 +80,7 @@ public class CalculatorTest
     {
         bool actual = Calculator.TryCalculate(() => "");
 
-        Assert.AreEqual(false, actual);
+        Assert.AreEqual<bool>(false, actual);
     }
     
     [TestMethod]
@@ -88,7 +88,7 @@ public class CalculatorTest
     {
         bool actual = Calculator.TryCalculate(() => " ");
 
-        Assert.AreEqual(false, actual);
+        Assert.AreEqual<bool>(false, actual);
     }
 
     [TestMethod]
@@ -98,22 +98,22 @@ public class CalculatorTest
     [DataRow("15 / 100", "0.15")]
     public void Calculator_Calculate_AreEqualAllOperators(string userInput, string expected)
     {
-        Program program = new();
+        ProgramBase program = new();
         StringWriter stringWriter = new();
         Console.SetOut(stringWriter);
 
         Calculator.Calculate(program.WriteLine, () => userInput);
 
-        Assert.AreEqual(expected, stringWriter.ToString().Trim());
+        Assert.AreEqual<string>(expected, stringWriter.ToString().Trim());
     }
 
     [TestMethod]
     public void Calculator_MathematicalOperations()
     {
-        Assert.AreEqual(5, Calculator.MathematicalOperations['+'](2, 3));
-        Assert.AreEqual(-1, Calculator.MathematicalOperations['-'](2, 3));
-        Assert.AreEqual(6, Calculator.MathematicalOperations['*'](2, 3));
-        Assert.AreEqual(2, Calculator.MathematicalOperations['/'](6, 3));
+        Assert.AreEqual<double>(5, Calculator.MathematicalOperations['+'](2, 3));
+        Assert.AreEqual<double>(-1, Calculator.MathematicalOperations['-'](2, 3));
+        Assert.AreEqual<double>(6, Calculator.MathematicalOperations['*'](2, 3));
+        Assert.AreEqual<double>(2, Calculator.MathematicalOperations['/'](6, 3));
     }
     
 }
