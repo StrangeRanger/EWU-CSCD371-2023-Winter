@@ -3,7 +3,9 @@ namespace Calculate.Tests;
 [TestClass]
 public class CalculatorTest
 {
+    #pragma warning disable CS8618
     private Calculator Calculator { get; set; }
+    #pragma warning restore CS8618
 
     [TestInitialize]
     public void TestInitialize()
@@ -15,9 +17,9 @@ public class CalculatorTest
     [TestCleanup]
     public void TestCleanup()
     {
-        Calculator = null;
+        Calculator = null !;
     }
-    
+
     [TestMethod]
     [DataRow("15 + 100", true)]
     [DataRow("15 - 100", true)]
@@ -26,12 +28,12 @@ public class CalculatorTest
     [DataRow("15 : 100", false)]
     public void Calculator_TryCalculate_AreEqualIfValidOperator(string userInput, bool expected)
     {
-        bool actual = Calculator.TryCalculate(() => userInput);
+        bool actual = Calculator.TryCalculate(userInput);
 
         Assert.AreEqual<bool>(expected, actual);
-        
+
     }
-    
+
     [TestMethod]
     [DataRow("15 + 100", true)]
     [DataRow("15.5 + 100.5", false)]
@@ -39,23 +41,23 @@ public class CalculatorTest
     [DataRow("a + b", false)]
     public void Calculator_TryCalculate_AreEqualIfInputIsOfTypeInt(string userInput, bool expected)
     {
-        bool actual = Calculator.TryCalculate(() => userInput);
+        bool actual = Calculator.TryCalculate(userInput);
 
         Assert.AreEqual<bool>(expected, actual);
-        
+
     }
-    
+
     [TestMethod]
     [DataRow("15 +100", false)]
     [DataRow("15- 100", false)]
     [DataRow("15*100", false)]
     public void Calculator_TryCalculate_AreEqualIfCorrectFormat(string userInput, bool expected)
     {
-        bool actual = Calculator.TryCalculate(() => userInput);
+        bool actual = Calculator.TryCalculate(userInput);
 
         Assert.AreEqual<bool>(expected, actual);
     }
-    
+
     [TestMethod]
     [DataRow("15 +", false)]
     [DataRow("15-", false)]
@@ -63,7 +65,7 @@ public class CalculatorTest
     [DataRow("/100", false)]
     public void Calculator_TryCalculate_AreEqualIfInputIsTooShort(string userInput, bool expected)
     {
-        bool actual = Calculator.TryCalculate(() => userInput);
+        bool actual = Calculator.TryCalculate(userInput);
 
         Assert.AreEqual<bool>(expected, actual);
     }
@@ -72,21 +74,21 @@ public class CalculatorTest
     [ExpectedException(typeof(ArgumentNullException))]
     public void Calculator_TryCalculate_ArgumentNullException()
     {
-        _ = Calculator.TryCalculate(() => null);
+        _ = Calculator.TryCalculate(null !);
     }
-    
+
     [TestMethod]
     public void Calculator_TryCalculate_AreEqualIfInputIsEmpty()
     {
-        bool actual = Calculator.TryCalculate(() => "");
+        bool actual = Calculator.TryCalculate("");
 
         Assert.AreEqual<bool>(false, actual);
     }
-    
+
     [TestMethod]
     public void Calculator_TryCalculate_AreEqualIfInputIsWhiteSpace()
     {
-        bool actual = Calculator.TryCalculate(() => " ");
+        bool actual = Calculator.TryCalculate(" ");
 
         Assert.AreEqual<bool>(false, actual);
     }
@@ -115,5 +117,5 @@ public class CalculatorTest
         Assert.AreEqual<double>(6, Calculator.MathematicalOperations['*'](2, 3));
         Assert.AreEqual<double>(2, Calculator.MathematicalOperations['/'](6, 3));
     }
-    
+
 }
