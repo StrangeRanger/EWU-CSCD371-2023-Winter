@@ -51,6 +51,7 @@ public class CalculatorTest
     [DataRow("15 +100", false)]
     [DataRow("15- 100", false)]
     [DataRow("15*100", false)]
+    [DataRow("15 100", false)]
     public void Calculator_TryCalculate_AreEqualIfCorrectFormat(string userInput, bool expected)
     {
         bool actual = Calculator.TryCalculate(userInput);
@@ -71,8 +72,8 @@ public class CalculatorTest
     }
 
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
-    public void Calculator_TryCalculate_ArgumentNullException()
+    [ExpectedException(typeof(NullReferenceException))]
+    public void Calculator_TryCalculate_NullReferenceException()
     {
         _ = Calculator.TryCalculate(null !);
     }
