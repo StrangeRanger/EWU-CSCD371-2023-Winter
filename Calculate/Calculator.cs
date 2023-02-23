@@ -1,3 +1,4 @@
+using System.Globalization;
 namespace Calculate;
 
 public class Calculator
@@ -65,7 +66,7 @@ public class Calculator
 
         Func<int, int, double> myDelegate = MathematicalOperations[operation];
         double result = myDelegate(a, b);
-
-        writeLine(result.ToString());
+        
+        writeLine(result.ToString(CultureInfo.CurrentCulture));
     }
 }
