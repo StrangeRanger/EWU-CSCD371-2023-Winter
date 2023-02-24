@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Assignment.Tests;
 
@@ -11,11 +12,11 @@ public class SampleDataTest
         _ = new SampleData();
     }
     
-    [ExpectedException(typeof(NotImplementedException))]
     [TestMethod]
     public void CsvRowsTest()
     {
         var sampleData = new SampleData();
-        var csvRows = sampleData.CsvRows;
+        string[] csvRows = (string[])sampleData.CsvRows;
+        Assert.AreEqual("1,Priscilla,Jenyns,pjenyns0@state.gov,7884 Corry Way,Helena,MT,70577", csvRows[1]);
     }
 }

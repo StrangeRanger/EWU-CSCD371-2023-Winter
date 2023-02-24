@@ -30,7 +30,7 @@ namespace Assignment
         
         public SampleData()
         {
-            CsvRows = new List<string>();
+            CsvRows = System.IO.File.ReadAllText("People.csv").Replace("Id,FirstName,LastName,Email,StreetAddress,City,State,Zip\r\n", null).Split("\r\n");
             People = new List<IPerson>();
         }
     }
