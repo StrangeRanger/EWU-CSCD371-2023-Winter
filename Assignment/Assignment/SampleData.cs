@@ -7,7 +7,7 @@ namespace Assignment
     public class SampleData : ISampleData
     {
         // 1.
-        public IEnumerable<string> CsvRows => throw new NotImplementedException();
+        public IEnumerable<string> CsvRows { get; init; }
 
         // 2.
         public IEnumerable<string> GetUniqueSortedListOfStatesGivenCsvRows() 
@@ -18,7 +18,7 @@ namespace Assignment
             => throw new NotImplementedException();
 
         // 4.
-        public IEnumerable<IPerson> People => throw new NotImplementedException();
+        public IEnumerable<IPerson> People { get; init; }
 
         // 5.
         public IEnumerable<(string FirstName, string LastName)> FilterByEmailAddress(
@@ -28,9 +28,10 @@ namespace Assignment
         public string GetAggregateListOfStatesGivenPeopleCollection(
             IEnumerable<IPerson> people) => throw new NotImplementedException();
         
-        SampleData()
+        public SampleData()
         {
             CsvRows = new List<string>();
+            People = new List<IPerson>();
         }
     }
 }
