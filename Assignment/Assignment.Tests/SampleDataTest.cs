@@ -28,15 +28,12 @@ public class SampleDataTest
     [TestMethod]
     public void SampleData_CountCsvRows_AreEqualIsTrue()
     {
-        SampleData sampleData = new SampleData();
-
         Assert.AreEqual(50, sampleData.CsvRows.Count());
     }
 
     [TestMethod]
     public void SampleData_GetUniqueSortedListOfStatesGivenCsvRows_Hardcoded_AreEqualIsTrue()
     {
-        SampleData sampleData = new SampleData();
         List<string> returnedList =
             (List<string>) sampleData.GetUniqueSortedListOfStatesGivenCsvRows();
         List<string> hardcodedListOfStates = new List<string>()
@@ -53,8 +50,6 @@ public class SampleDataTest
     [TestMethod]
     public void SampleData_RetrieveRowUsingSampleData_AreEqualIsTrue()
     {
-        SampleData sampleData = new SampleData();
-
         Assert.AreEqual("1,Priscilla,Jenyns,pjenyns0@state.gov,7884 Corry Way,Helena,MT,70577",
                         sampleData.CsvRows.ElementAt(0));
     }
@@ -62,7 +57,6 @@ public class SampleDataTest
     [TestMethod]
     public void SampleData_RetrieveRowUsingIEnumerator_AreEqualIsTrue()
     {
-        SampleData sampleData = new SampleData();
         IEnumerator enumerator = sampleData.CsvRows.GetEnumerator();
 
         enumerator.MoveNext();

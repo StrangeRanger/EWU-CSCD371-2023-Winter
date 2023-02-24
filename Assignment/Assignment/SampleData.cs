@@ -9,13 +9,13 @@ namespace Assignment
     public class SampleData : ISampleData
     {
         // 1. Implement the `ISampleData.CsvRows` property, loading the data from the `People.csv`
-        //    file and returning each line as a single string. ❌✔
+        //    file and returning each line as a single string. ✔
         //
         // - Change the "Copy to" property on People.csv to "Copy if newer" so that the file is
         //   deployed along with your test project. ✔
-        // - Using LINQ, skip the first row in the `People.csv`. ❌✔
+        // - Using LINQ, skip the first row in the `People.csv`. ✔
         // - Be sure to appropriately handle resource (`IDisposable`) items correctly if applicable
-        //   (and it may not be depending on how you implement it). ❌✔
+        //   (and it may not be depending on how you implement it). ✔
         public IEnumerable<string> CsvRows { get; } = File.ReadAllLines("People.csv").Skip(1);
 
         // 2. Implement `IEnumerable<string> GetUniqueSortedListOfStatesGivenCsvRows()` to return a
@@ -30,13 +30,15 @@ namespace Assignment
         public IEnumerable<string> GetUniqueSortedListOfStatesGivenCsvRows()
         {
             List<string> uniqueSortedStates = new List<string>();
+            // QUESTION: What are the advantages of specifying the type as the interface rather than
+            //           the implementing class?
             ISampleData sampleData = new SampleData();
             IEnumerator enumerator = sampleData.CsvRows.GetEnumerator();
 
             while (enumerator.MoveNext())
             {
                 // TODO: Should I really be using the null-forgiving operator here?
-                string[] split = enumerator.Current.ToString() !.Split(',');
+                string[] split = enumerator.Current.ToString()!.Split(',');
                 string state = split[6];
                 if (!uniqueSortedStates.Contains(state))
                 {
@@ -56,6 +58,10 @@ namespace Assignment
             // }
 
             uniqueSortedStates.Sort();
+
+            // TODO: Figure out if this is actually needed...
+            IDisposable disposable = (IDisposable)enumerator;
+            disposable.Dispose();
 
             return uniqueSortedStates;
         }
