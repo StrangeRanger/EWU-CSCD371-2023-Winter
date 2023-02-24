@@ -17,6 +17,6 @@ public class SampleDataTest
     {
         var sampleData = new SampleData();
         string[] csvRows = (string[])sampleData.CsvRows;
-        Assert.AreEqual("1,Priscilla,Jenyns,pjenyns0@state.gov,7884 Corry Way,Helena,MT,70577", csvRows[1]);
+        Assert.AreEqual("1,Priscilla,Jenyns,pjenyns0@state.gov,7884 Corry Way,Helena,MT,70577", csvRows[0]);
     }
 }
