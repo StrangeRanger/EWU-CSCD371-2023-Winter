@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace Assignment.Tests;
+﻿namespace Assignment.Tests;
 
 [TestClass]
 public class SampleDataTest
