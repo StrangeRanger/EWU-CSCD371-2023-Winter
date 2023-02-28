@@ -27,20 +27,21 @@ namespace Assignment
         // - Use `ISampleData.CsvRows` for your data source. ✔
         // - Don't forget the list should be unique. ✔
         // - Sort the list alphabetically. ✔
-        // - Include a test that leverages a hardcoded list of Spokane-based addresses. ❌✔
+        // - Include a test that leverages a hardcoded list of addresses. ❌✔
         // - Include a test that uses LINQ to verify the data is sorted correctly (do not use a
-        //   hardcoded list). ❌✔
+        //   hardcoded list). ✔
         public IEnumerable<string> GetUniqueSortedListOfStatesGivenCsvRows()
         {
-            List<string> uniqueSortedStates = new List<string>();
             // QUESTION: What are the advantages of specifying the type as the interface rather than
             //           the implementing class?
             ISampleData sampleData = new SampleData();
             IEnumerator enumerator = sampleData.CsvRows.GetEnumerator();
 
+            // Option 1: Using a `while` loop. Allows the use of `MoveNext()`.
+            List<string> uniqueSortedStates = new List<string>();
             while (enumerator.MoveNext())
             {
-                // TODO: Should I really be using the null-forgiving operator here?
+                // QUESTION: Should I really be using the null-forgiving operator here?
                 string[] split = enumerator.Current.ToString()!.Split(',');
                 string state = split[6];
                 if (!uniqueSortedStates.Contains(state))
@@ -49,11 +50,12 @@ namespace Assignment
                 }
             }
 
-            // NOTE: Another way of doing the above, but without the use of IEnumerator.
-            // foreach (string row in sampleData.CsvRows)
+            // Option 2: Using a `foreach` loop.
+            // List<string> uniqueSortedStates = new List<string>();
+            // foreach (string item in sampleData.CsvRows)
             // {
-            //     string[] rowArray = row.Split(',');
-            //     string state = rowArray[6];
+            //     string[] itemArray = item.Split(',');
+            //     string state = itemArray[6];
             //     if (!uniqueSortedStates.Contains(state))
             //     {
             //         uniqueSortedStates.Add(state);
@@ -77,7 +79,7 @@ namespace Assignment
         //   all the state names. ❌✔
         // - Given the array, consider using `string.Join` to combine the list into a single
         //   string. ❌✔
-        public string GetAggregateSortedListOfStatesUsingCsvRows()
+        public string GetAggregateSortedListOfStatesUsingCsvRows() 
             => throw new NotImplementedException();
 
         // 4. Implement the `ISampleData.People` property to return all the items in `People.csv` as
