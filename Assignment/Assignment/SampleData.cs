@@ -16,7 +16,10 @@ namespace Assignment
         // - Using LINQ, skip the first row in the `People.csv`. ✔
         // - Be sure to appropriately handle resource (`IDisposable`) items correctly if applicable
         //   (and it may not be depending on how you implement it). ✔
-        public IEnumerable<string> CsvRows { get; } = File.ReadAllLines("People.csv").Skip(1);
+        public IEnumerable<string> CsvRows { get; } =
+            from string line in File.ReadAllLines("People.csv")
+            where !line.Contains("Id,FirstName,LastName,Email,StreetAddress,City,State,Zip")
+            select line;
 
         // 2. Implement `IEnumerable<string> GetUniqueSortedListOfStatesGivenCsvRows()` to return a
         //    **sorted**, **unique** list of states. ❌✔
