@@ -88,14 +88,25 @@ namespace Assignment
         // - Be sure that `Person.Address` is also populated. ❌✔
         // - Adding null validation to all the `Person` and `Address` properties is **optional**.
         // - Consider using `ISampleData.CsvRows` in your test to verify your results. ❌✔
-        public IEnumerable<IPerson> People => throw new NotImplementedException();
+        public IEnumerable<IPerson> People =>
+            from string line in CsvRows
+            let split = line.Split(',')
+            orderby split[6], split[5], split[7]
+            select new Person(split[1], split[2], new Address(split[4], split[5], split[6], split[7]), split[3]);
 
         // 5. Implement `ISampleDate.FilterByEmailAddress(Predicate<string> filter)` to return a
         //    list of names where the email address matches the `filter`. ❌✔
         //
         // - Use `ISampleData.People` for your data source. ❌✔
-        public IEnumerable<(string FirstName, string LastName)> FilterByEmailAddress(
-            Predicate<string> filter) => throw new NotImplementedException();
+        public IEnumerable<(string FirstName, string LastName)> FilterByEmailAddress(Predicate<string> filter)
+        {
+            IEnumerable<(string FirstName, string LastName)> names =
+                from string line in CsvRows
+                let split = line.Split(',')
+                where filter(split[3])
+                select (split[1], split[2]);
+            return names;
+        }
 
         // 6. Implement `ISampleData.GetAggregateListOfStatesGivenPeopleCollection(IEnumerable<IPerson>
         //    people)` to return a `string` that contains a **unique**, comma-separated list of
