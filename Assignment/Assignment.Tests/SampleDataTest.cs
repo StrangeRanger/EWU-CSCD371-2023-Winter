@@ -94,4 +94,45 @@ public class SampleDataTest
         Assert.AreEqual("AL, AZ, CA, DC, FL, GA, IN, KS, LA, MD, MN, MO, MT, NC, NE, NH, NV, NY, OR, PA, SC, TN, TX, UT, VA, WA, WV",
             sampleData.GetAggregateSortedListOfStatesUsingCsvRows());
     }
+    
+    [TestMethod]
+    public void FilterByEmailAddress_AreEqualIsTrue()
+    {
+        Predicate<string> filter = new Predicate<string>(s => s.Contains(".com"));
+        string expected = "Karin, Joder";
+        string notExpected = "Priscilla Jenyns";
+        
+        IEnumerable<(string FirstName, string LastName)> filteredList =
+            sampleData.FilterByEmailAddress(filter);
+        
+        string data = string.Join(", ", filteredList);
+        
+        Assert.IsTrue(data.Contains(expected));
+        Assert.IsFalse(data.Contains(notExpected));
+    }
+    
+    [TestMethod]
+    public void People_AreEqualIsTrue()
+    {
+        Assert.AreEqual(50, sampleData.People.Count());
+    }
+    
+    [TestMethod]
+    public void GetPeople_AreEqualIsTrue()
+    {
+        Assert.AreEqual(sampleData.CsvRows.Count(), sampleData.People.Count());
+        Assert.IsTrue(sampleData.People.ElementAt(0).GetType() == typeof(Person));
+        Person person = (Person)sampleData.People.ElementAt(0);
+
+        bool found = false;
+        for (int i = 0; i < sampleData.CsvRows.Count(); i++)
+        {
+            if (sampleData.CsvRows.ElementAt(i).Contains(person.FirstName) && sampleData.CsvRows.ElementAt(i).Contains(person.LastName))
+            {
+                found = true;
+                break;
+            }
+        }
+        Assert.IsTrue(found);
+    }
 }
