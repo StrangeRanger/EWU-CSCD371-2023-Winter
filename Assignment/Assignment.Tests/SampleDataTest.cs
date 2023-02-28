@@ -87,4 +87,11 @@ public class SampleDataTest
             Assert.AreEqual(enumerator.ElementAt(i), sampleData.GetUniqueSortedListOfStatesGivenCsvRows().ElementAt(i));
         }
     }
+    
+    [TestMethod]
+    public void SampleData_GetAggregateSortedListOfStatesUsingCsvRows_AreEqualIsTrue()
+    {
+        Assert.AreEqual("AL, AZ, CA, DC, FL, GA, IN, KS, LA, MD, MN, MO, MT, NC, NE, NH, NV, NY, OR, PA, SC, TN, TX, UT, VA, WA, WV",
+            sampleData.GetAggregateSortedListOfStatesUsingCsvRows());
+    }
 }
