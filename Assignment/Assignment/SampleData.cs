@@ -77,8 +77,8 @@ namespace Assignment
         //   all the state names. ❌✔
         // - Given the array, consider using `string.Join` to combine the list into a single
         //   string. ❌✔
-        public string GetAggregateSortedListOfStatesUsingCsvRows()
-            => throw new NotImplementedException();
+        public string GetAggregateSortedListOfStatesUsingCsvRows() =>
+            string.Join(", ", GetUniqueSortedListOfStatesGivenCsvRows().ToArray());
 
         // 4. Implement the `ISampleData.People` property to return all the items in `People.csv` as
         //    `Person` objects ❌✔
