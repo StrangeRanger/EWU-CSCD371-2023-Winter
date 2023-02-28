@@ -103,10 +103,9 @@ namespace Assignment
         public IEnumerable<(string FirstName, string LastName)> FilterByEmailAddress(Predicate<string> filter)
         {
             IEnumerable<(string FirstName, string LastName)> names =
-                from string line in CsvRows
-                let split = line.Split(',')
-                where filter(split[3])
-                select (split[1], split[2]);
+                from Person line in People
+                where filter(line.EmailAddress)
+                select (line.FirstName, line.LastName);
             return names;
         }
 
