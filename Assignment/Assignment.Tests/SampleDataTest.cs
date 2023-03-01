@@ -29,94 +29,76 @@ public class SampleDataTest
     [TestMethod]
     public void SampleData_CountCsvRows_AreEqualIsTrue()
     {
-        Assert.AreEqual(50, sampleData.CsvRows.Count());
+        int expected = 50;
+        int actual = sampleData.CsvRows.Count();
+
+        Assert.AreEqual<int>(expected, actual);
     }
 
     [TestMethod]
     public void SampleData_GetUniqueSortedListOfStatesGivenCsvRows_Hardcoded_AreEqualIsTrue()
     {
-        List<string> returnedList =
-            (List<string>)sampleData.GetUniqueSortedListOfStatesGivenCsvRows();
-        List<string> hardcodedListOfStates = new List<string>()
-        {
-            "AL", "AZ", "CA", "DC", "FL", "GA", "IN", "KS", "LA", "MD", "MN", "MO", "MT", "NC",
-            "NE", "NH", "NV", "NY", "OR", "PA", "SC", "TN", "TX", "UT", "VA", "WA", "WV"
-        };
+        string expected = "AL, AZ, CA, DC, FL, GA, IN, KS, LA, MD, MN, MO, MT, NC, NE, NH, NV, NY, OR, PA, SC, TN, TX, UT, VA, WA, WV";
+        string actual = string.Join(", ", sampleData.GetUniqueSortedListOfStatesGivenCsvRows());
 
-        // TODO: Figure out another way of doing this without using CollectionAssert, as requested
-        //       in the assignment.
-        CollectionAssert.AreEqual(hardcodedListOfStates, returnedList);
-    }
-
-    [TestMethod]
-    public void SampleData_RetrieveRowUsingSampleData_AreEqualIsTrue()
-    {
-        Assert.AreEqual("1,Priscilla,Jenyns,pjenyns0@state.gov,7884 Corry Way,Helena,MT,70577",
-            sampleData.CsvRows.ElementAt(0));
-    }
-
-    [TestMethod]
-    public void SampleData_RetrieveRowUsingIEnumerator_AreEqualIsTrue()
-    {
-        IEnumerator enumerator = sampleData.CsvRows.GetEnumerator();
-
-        enumerator.MoveNext();
-
-        Assert.AreEqual("1,Priscilla,Jenyns,pjenyns0@state.gov,7884 Corry Way,Helena,MT,70577",
-            enumerator.Current);
-    }
-
-    [TestMethod]
-    public void SkipFirstRowOfCsvRows_AreEqualIsTrue()
-    {
-        Assert.IsFalse(sampleData.CsvRows.ElementAt(0)
-            .Contains("Id,FirstName,LastName,Email,StreetAddress,City,State,Zip"));
-    }
-
-    //Include a test that uses LINQ to verify the data is sorted correctly (do not use a hardcoded list).
-    [TestMethod]
-    public void isGetUniqueSortedListOfStatesGivenCsvRowsSorted_AreEqualIsTrue()
-    {
-        IEnumerable<string> enumerator =
-            from string line in sampleData.GetUniqueSortedListOfStatesGivenCsvRows()
-            orderby line
-            select line;
-
-        for (int i = 0; i < enumerator.Count(); i++)
-        {
-            Assert.AreEqual(enumerator.ElementAt(i), sampleData.GetUniqueSortedListOfStatesGivenCsvRows().ElementAt(i));
-        }
+        Assert.AreEqual<string>(expected, actual);
     }
     
+    [TestMethod]
+    public void SampleData_GetUniqueSortedListOfStatesGivenCsvRows_AreEqualIsTrue()
+    {
+        string actual = string.Join(", ", sampleData.GetUniqueSortedListOfStatesGivenCsvRows());
+        string expected = string.Join(", ", sampleData.CsvRows
+                                                      .Select(line => line.Split(',')[6])
+                                                      .Distinct()
+                                                      .OrderBy(state => state));
+
+        Assert.AreEqual<string>(expected, actual);
+    }
+
+    [TestMethod]
+    public void SampleData_FirstRowOfCsvRowsIsOmitted_IsTrue()
+    {
+        Assert.IsFalse(sampleData.CsvRows.ElementAt(0)
+                       .Contains("Id,FirstName,LastName,Email,StreetAddress,City,State,Zip"));
+    }
+    
+    [TestMethod]
+    public void SampleData_RetrieveFirstRow_AreEqualIsTrue()
+    {
+        string expected = "1,Priscilla,Jenyns,pjenyns0@state.gov,7884 Corry Way,Helena,MT,70577";
+        string actual = sampleData.CsvRows.ElementAt(0);
+
+        Assert.AreEqual<string>(expected, actual);
+    }
+
     [TestMethod]
     public void SampleData_GetAggregateSortedListOfStatesUsingCsvRows_AreEqualIsTrue()
     {
-        Assert.AreEqual("AL, AZ, CA, DC, FL, GA, IN, KS, LA, MD, MN, MO, MT, NC, NE, NH, NV, NY, OR, PA, SC, TN, TX, UT, VA, WA, WV",
-            sampleData.GetAggregateSortedListOfStatesUsingCsvRows());
+        string expected = "AL, AZ, CA, DC, FL, GA, IN, KS, LA, MD, MN, MO, MT, NC, NE, NH, NV, NY, OR, PA, SC, TN, TX, UT, VA, WA, WV";
+        string actual = sampleData.GetAggregateSortedListOfStatesUsingCsvRows();
+
+        Assert.AreEqual<string>(expected, actual);
     }
-    
+
+    // TODO: Check this test...
     [TestMethod]
     public void FilterByEmailAddress_AreEqualIsTrue()
     {
         Predicate<string> filter = new Predicate<string>(s => s.Contains(".com"));
         string expected = "Karin, Joder";
         string notExpected = "Priscilla Jenyns";
-        
+
         IEnumerable<(string FirstName, string LastName)> filteredList =
             sampleData.FilterByEmailAddress(filter);
-        
+
         string data = string.Join(", ", filteredList);
-        
+
         Assert.IsTrue(data.Contains(expected));
         Assert.IsFalse(data.Contains(notExpected));
     }
-    
-    [TestMethod]
-    public void People_AreEqualIsTrue()
-    {
-        Assert.AreEqual(50, sampleData.People.Count());
-    }
-    
+
+    // TODO: Check this test...
     [TestMethod]
     public void GetPeople_AreEqualIsTrue()
     {
@@ -127,12 +109,22 @@ public class SampleDataTest
         bool found = false;
         for (int i = 0; i < sampleData.CsvRows.Count(); i++)
         {
-            if (sampleData.CsvRows.ElementAt(i).Contains(person.FirstName) && sampleData.CsvRows.ElementAt(i).Contains(person.LastName))
+            if (sampleData.CsvRows.ElementAt(i).Contains(person.FirstName) &&
+                sampleData.CsvRows.ElementAt(i).Contains(person.LastName))
             {
                 found = true;
                 break;
             }
         }
         Assert.IsTrue(found);
+    }
+
+    [TestMethod]
+    public void SampleDataTest_GetAggregateListOfStatesGivenPeopleCollection_AreEqualIsTrue()
+    {
+        string expected = string.Join(", ", sampleData.GetUniqueSortedListOfStatesGivenCsvRows());
+        string actual = sampleData.GetAggregateListOfStatesGivenPeopleCollection(sampleData.People);
+
+        Assert.AreEqual<string>(expected, actual);
     }
 }
