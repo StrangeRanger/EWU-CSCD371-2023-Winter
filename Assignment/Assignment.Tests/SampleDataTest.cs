@@ -9,9 +9,9 @@ namespace Assignment.Tests;
 [TestClass]
 public class SampleDataTest
 {
-#pragma warning disable CS8618
+    #pragma warning disable CS8618
     private SampleData sampleData { get; set; }
-#pragma warning restore CS8618
+    #pragma warning restore CS8618
 
     [TestInitialize]
     public void TestInitialize()
