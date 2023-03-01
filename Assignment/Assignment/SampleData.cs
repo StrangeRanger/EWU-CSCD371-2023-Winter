@@ -35,48 +35,29 @@ namespace Assignment
             // QUESTION: What are the advantages of specifying the type as the interface rather than
             //           the implementing class?
             ISampleData sampleData = new SampleData();
-            IEnumerator enumerator = sampleData.CsvRows.GetEnumerator();
-
-            // Option 1: Using a `while` loop. Allows the use of `MoveNext()`.
             List<string> uniqueSortedStates = new List<string>();
-            while (enumerator.MoveNext())
+            
+            foreach (string item in sampleData.CsvRows)
             {
-                // QUESTION: Should I really be using the null-forgiving operator here?
-                string[] split = enumerator.Current.ToString()!.Split(',');
-                string state = split[6];
+                string[] itemArray = item.Split(',');
+                string state = itemArray[6];
                 if (!uniqueSortedStates.Contains(state))
                 {
                     uniqueSortedStates.Add(state);
                 }
             }
 
-            // Option 2: Using a `foreach` loop.
-            // List<string> uniqueSortedStates = new List<string>();
-            // foreach (string item in sampleData.CsvRows)
-            // {
-            //     string[] itemArray = item.Split(',');
-            //     string state = itemArray[6];
-            //     if (!uniqueSortedStates.Contains(state))
-            //     {
-            //         uniqueSortedStates.Add(state);
-            //     }
-            // }
-
             uniqueSortedStates.Sort();
-
-            // TODO: Figure out if this is actually needed...
-            IDisposable disposable = (IDisposable)enumerator;
-            disposable.Dispose();
 
             return uniqueSortedStates;
         }
 
         // 3. Implement `ISampleData.GetAggregateSortedListOfStatesUsingCsvRows()` to return a
-        //    `string` that contains a **unique**, comma separated list of states. ❌✔
+        //    `string` that contains a **unique**, comma separated list of states. ✔
         //
-        // - Use `ISampleData.GetUniqueSortedListOfStatesGivenCsvRows()` for your data source. ❌✔
+        // - Use `ISampleData.GetUniqueSortedListOfStatesGivenCsvRows()` for your data source. ✔
         // - Consider "selecting" only the states and calling `ToArray()` to retrieve an array of
-        //   all the state names. ❌✔
+        //   all the state names. ✔
         // - Given the array, consider using `string.Join` to combine the list into a single
         //   string. ❌✔
         public string GetAggregateSortedListOfStatesUsingCsvRows() =>
