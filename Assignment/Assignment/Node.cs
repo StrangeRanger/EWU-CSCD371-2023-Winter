@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Assignment;
 
@@ -9,11 +7,11 @@ public class Node<T>
 {
     public Node(T value)
     {
-        _Value = value == null ? throw new ArgumentNullException(nameof(value)) : value;
+        Value = value == null ? throw new ArgumentNullException(nameof(value)) : value;
         Next = this;
     }
 
-    private T _Value{ get; set;}
+    private T Value{ get; set;}
     public Node<T> Next { get; private set; } 
     
     public void Append(T value)
@@ -24,7 +22,7 @@ public class Node<T>
         Node<T> currentNode = this;
         while (currentNode.Next != this)
         {
-            if(currentNode.Next._Value!.Equals(value))
+            if(currentNode.Next.Value!.Equals(value))
             {
                 throw new ArgumentException("Value already exists in list");
             }
@@ -36,10 +34,10 @@ public class Node<T>
     public IEnumerable<T> AllChildItems()
     {
         Node<T> currentNode = this;
-        yield return currentNode._Value!;
+        yield return currentNode.Value!;
         while (currentNode.Next != this)
         {
-            yield return currentNode.Next._Value!;
+            yield return currentNode.Next.Value!;
             currentNode = currentNode.Next;
         }
     }
@@ -47,11 +45,11 @@ public class Node<T>
     public IEnumerable<T> ChildItems(int maximum)
     {
         Node<T> currentNode = this;
-        yield return currentNode._Value!;
+        yield return currentNode.Value!;
         maximum--;
         while (currentNode.Next != this && maximum > 0)
         {
-            yield return currentNode.Next._Value!;
+            yield return currentNode.Next.Value!;
             currentNode = currentNode.Next;
             maximum--;
         }
@@ -59,7 +57,7 @@ public class Node<T>
     
     public override string ToString()
     {
-        return _Value!.ToString()!;
+        return Value!.ToString()!;
     }
     
     public void RemoveAllChildItems()
@@ -72,7 +70,7 @@ public class Node<T>
         Node<T> currentNode = this;
         while(currentNode.Next != this)
         {
-            if(currentNode.Next._Value!.Equals(value))
+            if(currentNode.Next.Value!.Equals(value))
             {
                 return true;
             }

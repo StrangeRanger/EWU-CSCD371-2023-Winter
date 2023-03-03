@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,7 +11,7 @@ public class NodeTest
     [TestMethod]
     public void Node_Constructor_NullValue_ThrowsArgumentNullException()
     {
-        Node<string> node = new Node<string>(null !);
+        _ = new Node<string>(null !);
     }
     
     [TestMethod]
