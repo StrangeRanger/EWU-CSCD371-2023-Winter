@@ -38,12 +38,13 @@ public class SampleDataTest
     [TestMethod]
     public void SampleData_GetUniqueSortedListOfStatesGivenCsvRows_Hardcoded_AreEqualIsTrue()
     {
-        string expected = "AL, AZ, CA, DC, FL, GA, IN, KS, LA, MD, MN, MO, MT, NC, NE, NH, NV, NY, OR, PA, SC, TN, TX, UT, VA, WA, WV";
+        string expected =
+            "AL, AZ, CA, DC, FL, GA, IN, KS, LA, MD, MN, MO, MT, NC, NE, NH, NV, NY, OR, PA, SC, TN, TX, UT, VA, WA, WV";
         string actual = string.Join(", ", sampleData.GetUniqueSortedListOfStatesGivenCsvRows());
 
         Assert.AreEqual<string>(expected, actual);
     }
-    
+
     [TestMethod]
     public void SampleData_GetUniqueSortedListOfStatesGivenCsvRows_AreEqualIsTrue()
     {
@@ -62,7 +63,7 @@ public class SampleDataTest
         Assert.IsFalse(sampleData.CsvRows.ElementAt(0)
                        .Contains("Id,FirstName,LastName,Email,StreetAddress,City,State,Zip"));
     }
-    
+
     [TestMethod]
     public void SampleData_RetrieveFirstRow_AreEqualIsTrue()
     {
@@ -75,22 +76,22 @@ public class SampleDataTest
     [TestMethod]
     public void SampleData_GetAggregateSortedListOfStatesUsingCsvRows_AreEqualIsTrue()
     {
-        string expected = "AL, AZ, CA, DC, FL, GA, IN, KS, LA, MD, MN, MO, MT, NC, NE, NH, NV, NY, OR, PA, SC, TN, TX, UT, VA, WA, WV";
+        string expected =
+            "AL, AZ, CA, DC, FL, GA, IN, KS, LA, MD, MN, MO, MT, NC, NE, NH, NV, NY, OR, PA, SC, TN, TX, UT, VA, WA, WV";
         string actual = sampleData.GetAggregateSortedListOfStatesUsingCsvRows();
 
         Assert.AreEqual<string>(expected, actual);
     }
-
-    // TODO: Check this test...
+    
     [TestMethod]
     public void FilterByEmailAddress_AreEqualIsTrue()
     {
-        Predicate<string> filter = new Predicate<string>(s => s.Contains(".com"));
+        bool Filter(string s) => s.Contains(".com");
         string expected = "Karin, Joder";
         string notExpected = "Priscilla Jenyns";
 
         IEnumerable<(string FirstName, string LastName)> filteredList =
-            sampleData.FilterByEmailAddress(filter);
+            sampleData.FilterByEmailAddress(Filter);
 
         string data = string.Join(", ", filteredList);
 
@@ -98,11 +99,10 @@ public class SampleDataTest
         Assert.IsFalse(data.Contains(notExpected));
     }
 
-    // TODO: Check this test...
     [TestMethod]
     public void GetPeople_AreEqualIsTrue()
     {
-        Assert.AreEqual(sampleData.CsvRows.Count(), sampleData.People.Count());
+        Assert.AreEqual<int>(sampleData.CsvRows.Count(), sampleData.People.Count());
         Assert.IsTrue(sampleData.People.ElementAt(0).GetType() == typeof(Person));
         Person person = (Person)sampleData.People.ElementAt(0);
 

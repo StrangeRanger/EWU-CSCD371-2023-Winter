@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,21 +13,21 @@ public class NodeTest
     {
         _ = new Node<string>(null !);
     }
-    
+
     [TestMethod]
     public void Node_Constructor_ValidValue_SetsValue()
     {
         Node<string> node = new Node<string>("Test");
         Assert.AreEqual("Test", node.ToString());
     }
-    
+
     [TestMethod]
     public void Node_Constructor_ValidValue_SetsNextToSelf()
     {
         Node<string> node = new Node<string>("Test");
         Assert.AreEqual(node, node.Next);
     }
-    
+
     [TestMethod]
     public void Node_Append_ValidValue_SetsNextToNewNode()
     {
@@ -35,7 +35,7 @@ public class NodeTest
         node.Append("Test2");
         Assert.AreEqual("Test2", node.Next.ToString());
     }
-    
+
     [TestMethod]
     public void Nodes_AreCircular_IsTrue()
     {
@@ -48,7 +48,7 @@ public class NodeTest
         Assert.AreEqual("Test", node.Next.Next.Next.ToString());
         Assert.AreEqual("Test2", node.Next.Next.Next.Next.ToString());
     }
-    
+
     [ExpectedException(typeof(ArgumentException))]
     [TestMethod]
     public void Node_Append_DuplicateValue_ThrowsArgumentException()
@@ -57,7 +57,7 @@ public class NodeTest
         node.Append("Test2");
         node.Append("Test2");
     }
-    
+
     [TestMethod]
     public void Node_AllChildItems_ReturnsCorrectNumberOfItems()
     {
