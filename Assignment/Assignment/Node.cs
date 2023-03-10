@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Assignment;
@@ -11,18 +11,20 @@ public class Node<T>
         Next = this;
     }
 
-    private T Value{ get; set;}
-    public Node<T> Next { get; private set; } 
-    
+    private T Value { get; set; }
+    public Node<T> Next { get; private set; }
+
     public void Append(T value)
     {
-        Node<T> newNode = new Node<T>(value);
-        newNode.Next = this;
-        
+        Node<T> newNode = new Node<T>(value)
+        {
+            Next = this
+        };
+
         Node<T> currentNode = this;
         while (currentNode.Next != this)
         {
-            if(currentNode.Next.Value!.Equals(value))
+            if (currentNode.Next.Value !.Equals(value))
             {
                 throw new ArgumentException("Value already exists in list");
             }
@@ -34,43 +36,43 @@ public class Node<T>
     public IEnumerable<T> AllChildItems()
     {
         Node<T> currentNode = this;
-        yield return currentNode.Value!;
+        yield return currentNode.Value !;
         while (currentNode.Next != this)
         {
-            yield return currentNode.Next.Value!;
+            yield return currentNode.Next.Value !;
             currentNode = currentNode.Next;
         }
     }
-    
+
     public IEnumerable<T> ChildItems(int maximum)
     {
         Node<T> currentNode = this;
-        yield return currentNode.Value!;
+        yield return currentNode.Value !;
         maximum--;
         while (currentNode.Next != this && maximum > 0)
         {
-            yield return currentNode.Next.Value!;
+            yield return currentNode.Next.Value !;
             currentNode = currentNode.Next;
             maximum--;
         }
     }
-    
+
     public override string ToString()
     {
-        return Value!.ToString()!;
+        return Value !.ToString() !;
     }
-    
+
     public void RemoveAllChildItems()
     {
         Next = this;
     }
-    
+
     public bool Exist(T value)
     {
         Node<T> currentNode = this;
-        while(currentNode.Next != this)
+        while (currentNode.Next != this)
         {
-            if(currentNode.Next.Value!.Equals(value))
+            if (currentNode.Next.Value !.Equals(value))
             {
                 return true;
             }
