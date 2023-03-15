@@ -96,7 +96,6 @@ public class PingProcessTests
         try
         {
             result.Wait();
-
         }
         catch (AggregateException exception)
         {
@@ -119,7 +118,7 @@ public class PingProcessTests
         }
         catch (AggregateException exception)
         {
-            throw exception.Flatten().InnerExceptions.First();
+            throw exception.Flatten().InnerException!;
         }
     }
 
