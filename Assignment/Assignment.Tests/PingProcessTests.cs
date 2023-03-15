@@ -103,6 +103,7 @@ public class PingProcessTests
         }
     }
 
+    //TODO: Figure out why it's not catching the TaskCanceledException on Hunter T's machine.
     [TestMethod]
     [ExpectedException(typeof(TaskCanceledException))]
     public void RunAsync_UsingTplWithCancellation_CatchAggregateExceptionWrappingTaskCanceledException()
