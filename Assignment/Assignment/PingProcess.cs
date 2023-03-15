@@ -51,6 +51,8 @@ public class PingProcess
             Process process = RunProcessInternal(StartInfo, updateStdOutput, default, cancellationToken);
             return new PingResult(process.ExitCode, stringBuilder?.ToString());
         });
+        cancellationToken.ThrowIfCancellationRequested();
+        
         await task;
         return task.Result;
     }
