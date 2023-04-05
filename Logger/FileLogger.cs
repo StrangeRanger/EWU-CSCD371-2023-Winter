@@ -14,8 +14,8 @@ public class FileLogger : BaseLogger
 
     public override void Log(LogLevel logLevel, string message)
     {
-        DateTime date     = DateTime.Now;
-        string   outGoing = $"{date} {ClassName} {logLevel}: {message}";
+        DateTime date = DateTime.Now;
+        string outGoing = $"{date} {ClassName} {logLevel}: {message}";
 
         StreamWriter streamWriter = File.CreateText(_FilePath);
         streamWriter.WriteLine(outGoing);

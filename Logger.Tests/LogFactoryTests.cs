@@ -15,7 +15,7 @@ public class LogFactoryTests
     [TestMethod]
     public void CreateLoggerTest_ReturnsNull()
     {
-        LogFactory  logFactory = new();
+        LogFactory logFactory = new();
         BaseLogger? baseLogger = logFactory.CreateLogger(nameof(FileLogger));
         Assert.AreEqual(null, baseLogger);
     }
