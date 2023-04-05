@@ -6,27 +6,15 @@ public class Jester
     private IJokeOutput? _JokeOutput;
     public IJokeOutput JokeOutput
     {
-        get
-        {
-            return _JokeOutput!;
-        }
-        set
-        {
-            _JokeOutput = value ?? throw new ArgumentNullException(nameof(value));
-        }
+        get => _JokeOutput!;
+        set => _JokeOutput = value ?? throw new ArgumentNullException(nameof(value));
     }
 
     private IJokeService? _JokeService;
     public IJokeService JokeService
     {
-        get
-        {
-            return _JokeService!;
-        }
-        set
-        {
-            _JokeService = value ?? throw new ArgumentNullException(nameof(value));
-        }
+        get => _JokeService!;
+        set => _JokeService = value ?? throw new ArgumentNullException(nameof(value));
     }
 
     /** Constructor. */
