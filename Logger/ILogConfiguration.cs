@@ -3,5 +3,4 @@
 public interface ILoggerConfiguration
 {
     string LogSource { get; }
-    
 }

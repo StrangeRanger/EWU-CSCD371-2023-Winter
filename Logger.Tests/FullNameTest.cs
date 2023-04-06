@@ -12,7 +12,7 @@ public class FullNameTest
         // Assert
         Assert.AreEqual("John Doe", fullName.ToString());
     }
-    
+
     [TestMethod]
     public void With_Middle_Name()
     {

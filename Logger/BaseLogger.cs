@@ -6,8 +6,10 @@ namespace Logger;
 public abstract class BaseLogger
 {
     public string LogSource { get; }
-    public BaseLogger(string logSource) => LogSource = string.IsNullOrWhiteSpace(logSource)
-            ? throw new ArgumentException($"'{nameof(logSource)}' cannot be null or whitespace.", nameof(logSource))
+    public BaseLogger(string logSource) => LogSource =
+        string.IsNullOrWhiteSpace(logSource)
+            ? throw new ArgumentException($"'{nameof(logSource)}' cannot be null or whitespace.",
+                                          nameof(logSource))
             : logSource;
 
     public abstract void Log(LogLevel logLevel, string message);
