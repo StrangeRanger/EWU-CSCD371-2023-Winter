@@ -20,7 +20,10 @@ public class Node<T>
 
         Node<T> current = this;
 
-        while (current.Next != current) { current = current.Next; }
+        while (current.Next != current)
+        {
+            current = current.Next;
+        }
 
         current.Next = new Node<T>(value);
     }
@@ -41,8 +44,14 @@ public class Node<T>
 
         while (true)
         {
-            if (current.Value != null && current.Value.Equals(value)) { return true; }
-            if (current.Next == current) { return false; }
+            if (current.Value != null && current.Value.Equals(value))
+            {
+                return true;
+            }
+            if (current.Next == current)
+            {
+                return false;
+            }
 
             current = current.Next;
         }
@@ -70,5 +79,4 @@ public class Node<T>
     {
         return Value is not null ? Value.ToString()! : string.Empty;
     }
-
 }

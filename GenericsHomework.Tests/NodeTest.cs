@@ -23,7 +23,7 @@ public class NodeTest
         Assert.AreEqual<int>(30, node.Next.Next.Value);
         Assert.AreEqual<int>(40, node.Next.Next.Next.Value);
     }
-    
+
     [TestMethod]
     [ExpectedException(typeof(NullReferenceException))]
     public void Node_InstantiateNullNode_ThrowNullReferenceException()
