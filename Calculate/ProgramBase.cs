@@ -9,5 +9,6 @@ public class ProgramBase
     //                      default during compilation, right? Wouldn't that make this constructor
     //                      redundant?
     public ProgramBase()
-    { }
+    {
+    }
 }

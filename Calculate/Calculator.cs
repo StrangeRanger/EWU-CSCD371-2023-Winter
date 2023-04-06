@@ -3,14 +3,9 @@ namespace Calculate;
 
 public class Calculator
 {
-    public IReadOnlyDictionary<char, Func<int, int, double>> MathematicalOperations {
-        get;
-    } = new Dictionary<char, Func<int, int, double>> {
-        { '+', Add },
-        { '-', Subtract },
-        { '*', Multiply },
-        { '/', Divide }
-    };
+    public IReadOnlyDictionary<char, Func<int, int, double>> MathematicalOperations { get; } =
+        new Dictionary<char, Func<int, int, double>> {
+            { '+', Add }, { '-', Subtract }, { '*', Multiply }, { '/', Divide } };
 
     public static double Add(int a, int b)
     {
@@ -31,7 +26,7 @@ public class Calculator
     {
         return (double)a / b;
     }
-    
+
     public bool TryCalculate(string input)
     {
         string[] parts = input.Split(' ');
@@ -42,7 +37,10 @@ public class Calculator
             _ = int.Parse(parts[2]);
             char operation = parts[1].ToCharArray()[0];
 
-            if (!MathematicalOperations.ContainsKey(operation)) { return false; }
+            if (!MathematicalOperations.ContainsKey(operation))
+            {
+                return false;
+            }
         }
         catch (Exception e) when (e is IndexOutOfRangeException or FormatException)
         {
@@ -57,8 +55,11 @@ public class Calculator
     {
         string input = readLine() ?? throw new ArgumentNullException(nameof(readLine));
         string[] parts = input.Split(' ');
-        
-        if (!TryCalculate(input)) { return; }
+
+        if (!TryCalculate(input))
+        {
+            return;
+        }
 
         int a = int.Parse(parts[0]);
         int b = int.Parse(parts[2]);
@@ -66,7 +67,7 @@ public class Calculator
 
         Func<int, int, double> myDelegate = MathematicalOperations[operation];
         double result = myDelegate(a, b);
-        
+
         writeLine(result.ToString(CultureInfo.CurrentCulture));
     }
 }

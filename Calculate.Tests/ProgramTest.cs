@@ -3,9 +3,9 @@ namespace Calculate.Tests;
 [TestClass]
 public class ProgramTest
 {
-    #pragma warning disable CS8618
+#pragma warning disable CS8618
     private ProgramBase Program { get; set; }
-    #pragma warning restore CS8618
+#pragma warning restore CS8618
 
     [TestInitialize]
     public void TestInitialize()
@@ -17,7 +17,7 @@ public class ProgramTest
     [TestCleanup]
     public void TestCleanup()
     {
-        Program = null !;
+        Program = null!;
     }
 
     [TestMethod]
@@ -34,10 +34,8 @@ public class ProgramTest
     [TestMethod]
     public void Program_WriteLinePerformInitSetter_AreEqual()
     {
-        ProgramBase customProgram = new()
-        {
-            WriteLine = s => Assert.AreEqual<string>("Hello World", s)
-        };
+        ProgramBase customProgram =
+            new() { WriteLine = s => Assert.AreEqual<string>("Hello World", s) };
 
         customProgram.WriteLine("Hello World");
     }
@@ -50,19 +48,16 @@ public class ProgramTest
 
         string? actual = Program.ReadLine();
 
-        Assert.AreEqual<string>("Hello World", actual !);
+        Assert.AreEqual<string>("Hello World", actual!);
     }
 
     [TestMethod]
     public void Program_ReadLinePerformInitSetter_AreEqual()
     {
-        ProgramBase customProgram = new()
-        {
-            ReadLine = () => "Hello World"
-        };
+        ProgramBase customProgram = new() { ReadLine = () => "Hello World" };
 
         string? actual = customProgram.ReadLine();
 
-        Assert.AreEqual<string>("Hello World", actual !);
+        Assert.AreEqual<string>("Hello World", actual!);
     }
 }

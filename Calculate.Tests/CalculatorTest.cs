@@ -3,9 +3,9 @@ namespace Calculate.Tests;
 [TestClass]
 public class CalculatorTest
 {
-    #pragma warning disable CS8618
+#pragma warning disable CS8618
     private Calculator Calculator { get; set; }
-    #pragma warning restore CS8618
+#pragma warning restore CS8618
 
     [TestInitialize]
     public void TestInitialize()
@@ -17,7 +17,7 @@ public class CalculatorTest
     [TestCleanup]
     public void TestCleanup()
     {
-        Calculator = null !;
+        Calculator = null!;
     }
 
     [TestMethod]
@@ -31,7 +31,6 @@ public class CalculatorTest
         bool actual = Calculator.TryCalculate(userInput);
 
         Assert.AreEqual<bool>(expected, actual);
-
     }
 
     [TestMethod]
@@ -44,7 +43,6 @@ public class CalculatorTest
         bool actual = Calculator.TryCalculate(userInput);
 
         Assert.AreEqual<bool>(expected, actual);
-
     }
 
     [TestMethod]
@@ -75,7 +73,7 @@ public class CalculatorTest
     [ExpectedException(typeof(NullReferenceException))]
     public void Calculator_TryCalculate_NullReferenceException()
     {
-        _ = Calculator.TryCalculate(null !);
+        _ = Calculator.TryCalculate(null!);
     }
 
     [TestMethod]
@@ -118,5 +116,4 @@ public class CalculatorTest
         Assert.AreEqual<double>(6, Calculator.MathematicalOperations['*'](2, 3));
         Assert.AreEqual<double>(2, Calculator.MathematicalOperations['/'](6, 3));
     }
-
 }
