@@ -8,19 +8,25 @@ public record class Person : Entity
         Id = id;
         EntityFullName = fullName;
     }
-    
+
     private FullName EntityFullName { get; }
     public string FirstName
     {
-        get { return EntityFullName.FirstName; }
+        get {
+            return EntityFullName.FirstName;
+        }
     }
     public string? MiddleName
     {
-        get { return EntityFullName.MiddleName; }
+        get {
+            return EntityFullName.MiddleName;
+        }
     }
     public string LastName
     {
-        get { return EntityFullName.LastName; }
+        get {
+            return EntityFullName.LastName;
+        }
     }
 
     /* Implemented implicitly, because there is no need to implicitly implement this property.
@@ -29,11 +35,11 @@ public record class Person : Entity
      */
     public override string Name
     {
-        get
-        {
+        get {
             return EntityFullName.MiddleName is null
-                ? string.Format($"{EntityFullName.FirstName} {EntityFullName.LastName}")
-                : string.Format($"{EntityFullName.FirstName} {EntityFullName.MiddleName} {EntityFullName.LastName}");
+                       ? string.Format($"{EntityFullName.FirstName} {EntityFullName.LastName}")
+                       : string.Format(
+                             $"{EntityFullName.FirstName} {EntityFullName.MiddleName} {EntityFullName.LastName}");
         }
     }
 }
