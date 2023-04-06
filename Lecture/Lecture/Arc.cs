@@ -7,12 +7,12 @@ public record struct Arc
         StartAngle = startAngle;
         SweepAngle = sweeepAngle;
     }
-    public int StartAngle { get; }
-    public int SweepAngle { get;  }
 
+    public int StartAngle { get; }
+    public int SweepAngle { get; }
 
     // Don't do this!!!!
-    //public void ZeroOut()
+    // public void ZeroOut()
     //{
     //    Angle = 0;
     //}

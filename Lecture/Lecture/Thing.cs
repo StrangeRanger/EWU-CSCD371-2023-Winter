@@ -6,7 +6,7 @@ public class Thing : ISavable
 
     public Thing(string name)
     {
-        Name=name;
+        Name = name;
     }
 
     public virtual string ToText()
@@ -14,4 +14,3 @@ public class Thing : ISavable
         return $"{nameof(Name)}: {Name}";
     }
 }
-

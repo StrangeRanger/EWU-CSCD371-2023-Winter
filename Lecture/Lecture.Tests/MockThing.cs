@@ -1,11 +1,12 @@
 ﻿namespace Lecture.Tests;
+
 internal class MockThing : ISavable
 {
     public string Name { get; set; }
 
     public MockThing(string name)
     {
-        Name=name;
+        Name = name;
     }
 
     public string ToText()
@@ -13,4 +14,3 @@ internal class MockThing : ISavable
         return $"{nameof(Name)}: {Name}";
     }
 }
-

@@ -10,7 +10,6 @@ public enum Grade : int
     A,
 }
 
-
 [Flags]
 public enum FileAttributes : int
 {

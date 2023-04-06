@@ -10,8 +10,9 @@ public class StorageServiceTests
     public void ToText_UsingMock_Success()
     {
         Mock<ISavable> mock = new();
-        mock.SetupSequence(
-            savable => savable.ToText()).Returns("Something").Returns("SomethingElse");
+        mock.SetupSequence(savable => savable.ToText())
+            .Returns("Something")
+            .Returns("SomethingElse");
 
         Assert.AreEqual<string?>("Something", mock.Object.ToText());
         Assert.AreEqual<string?>("SomethingElse", mock.Object.ToText());
@@ -23,9 +24,8 @@ public class StorageServiceTests
     public void Save_GiveMockThing_Success()
     {
         MockThing mockSavable = new("Inigo Montoya");
-        //StorageService storageService = new(mockSavable);
+        // StorageService storageService = new(mockSavable);
     }
-
 
     [TestMethod]
     public void StorageService_GivenInMemoryStore_Success()
@@ -35,9 +35,8 @@ public class StorageServiceTests
         mock.Setup<string?>(savable => savable.ToText()).Returns("mockToText");
         StorageService storageService = new(store);
 
-        //storageService.Save(mock.Object);
+        // storageService.Save(mock.Object);
 
-        //mock.Verify()
-
+        // mock.Verify()
     }
 }

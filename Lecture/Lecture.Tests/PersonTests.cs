@@ -15,7 +15,7 @@ public class PersonTests
     [ExpectedException(typeof(ArgumentNullException))]
     public void Name_GivenNameIsNull_ThrowException()
     {
-        Person person = new ("Inigo Montoya");
+        Person person = new("Inigo Montoya");
         person.Name = null!;
     }
 
@@ -23,7 +23,7 @@ public class PersonTests
     public void Equality_TwoStrings_AreEqual()
     {
         string datetime = DateTime.Now.ToString();
-        
+
         Assert.IsTrue($"Inigo Montoya { datetime} " == $"Inigo Montoya { datetime} ");
     }
 
@@ -33,10 +33,8 @@ public class PersonTests
         string datetime = DateTime.Now.ToString();
         Person person1 = new($"Inigo Montoya { datetime} ");
         Person person2 = new(person1.Name);
-        Person person3 = 
-            new($"Inigo Montoya { DateTime.Now.AddDays(1) } ");
+        Person person3 = new($"Inigo Montoya { DateTime.Now.AddDays(1) } ");
         Assert.IsTrue(person1 == person2);
         Assert.IsTrue(person1 != person3);
     }
 }
-

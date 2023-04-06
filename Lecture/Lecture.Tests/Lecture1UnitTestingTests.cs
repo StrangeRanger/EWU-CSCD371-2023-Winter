@@ -3,7 +3,7 @@ namespace Lecture.Tests;
 [TestClass]
 public class Lecture1UnitTestingTests
 {
-    Person Person { get; set; } = null!; // Assined in TestInitialize
+    Person Person { get; set; } = null!;  // Assined in TestInitialize
     string UserName { get; set; } = "";
     string Password { get; set; } = "";
 
@@ -37,5 +37,4 @@ public class Lecture1UnitTestingTests
         bool result = Person.Login(UserName, "Bad Password");
         Assert.IsFalse(result);
     }
-
 }

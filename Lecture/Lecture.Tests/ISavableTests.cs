@@ -23,13 +23,12 @@ public class ISavableTests
     [TestMethod]
     public void SimpleSave_GivenADocument_DocumentString()
     {
-        Document thing = new ("Thing 1");
+        Document thing = new("Thing 1");
         Assert.AreEqual<string?>("Name: Thing 1, Content: ", ((ISavable)thing).ToText());
     }
 
+#pragma warning disable CA1806  // This is intentionally demonstrating a less than great API.
 
-
-#pragma warning disable CA1806 // This is intentionally demonstrating a less than great API.
     [TestMethod]
     public void APIDesignExampleWithToUpper()
     {
@@ -38,6 +37,6 @@ public class ISavableTests
         Assert.AreEqual<string>("Inigo Montoya", text);
         Assert.AreEqual<string>("INIGO MONTOYA", text.ToUpper());
     }
-#pragma warning restore CA1806 // Do not ignore method results
-}
 
+#pragma warning restore CA1806  // Do not ignore method results
+}

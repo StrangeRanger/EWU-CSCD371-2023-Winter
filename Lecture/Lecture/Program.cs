@@ -11,7 +11,4 @@ class Program
         Console.WriteLine("Inigo Montoya: " + text);
         Console.WriteLine(guid.ToString());
     }
-
-
 }
-

@@ -5,7 +5,7 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores", 
-    Justification = "Underscores allowed in test method names")]
-[assembly: SuppressMessage("Naming", "INTL0003:Methods PascalCase",
-    Justification = "Underscores allowed in test method names")]
+[assembly:SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores",
+                          Justification = "Underscores allowed in test method names")]
+[assembly:SuppressMessage("Naming", "INTL0003:Methods PascalCase",
+                          Justification = "Underscores allowed in test method names")]

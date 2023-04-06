@@ -20,12 +20,12 @@ public static class StringExtensions
     /// <summary>
     /// Implement's VB's Like operator logic.
     /// </summary>
-    // Provided in addition to IsLike that takes an escape character 
+    // Provided in addition to IsLike that takes an escape character
     // even though a default escapeCharacter is provided as it
-    // is hopefully simpler to use this one because no thinking 
-    // about escapeCharacter is required.  
-    public static bool IsLike(this string text, string pattern) =>
-        new WildcardPattern(pattern).IsMatch(text);
+    // is hopefully simpler to use this one because no thinking
+    // about escapeCharacter is required.
+    public static bool IsLike(this string text,
+                              string pattern) => new WildcardPattern(pattern).IsMatch(text);
 
     /// <summary>
     /// Implement's VB's Like operator logic.

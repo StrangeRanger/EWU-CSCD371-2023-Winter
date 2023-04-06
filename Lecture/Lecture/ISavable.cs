@@ -6,4 +6,3 @@ public interface ISavable
     // Don't change and interface!!!!!
     // Stream ToStream();
 }
-

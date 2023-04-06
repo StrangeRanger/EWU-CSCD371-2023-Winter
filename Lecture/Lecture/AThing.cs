@@ -6,7 +6,7 @@ public abstract class AThing : ISavable
 
     protected AThing(string name)
     {
-        Name=name;
+        Name = name;
     }
 
     public string ToText()
@@ -14,4 +14,3 @@ public abstract class AThing : ISavable
         return $"{nameof(Name)}: {Name}";
     }
 }
-

@@ -31,18 +31,18 @@ class Program
 
                 try
                 {
-                    number=EnterNumber(input);
+                    number = EnterNumber(input);
                 }
-                catch(ArgumentNullException)
+                catch (ArgumentNullException)
                 {
                     Console.WriteLine("Quit");
                     return;
                 }
-                catch (ArgumentException) 
+                catch (ArgumentException)
                 {
                     Console.WriteLine($"Hey.... {input} is not a number (stupid)!!");
                 }
-                catch(Exception)
+                catch (Exception)
                 {
                     // Never have an empty Exception block
                 }
@@ -55,17 +55,14 @@ class Program
         int number;
         try
         {
-            number = int.Parse(input); // Replace with int.TryParse()
+            number = int.Parse(input);  // Replace with int.TryParse()
             Console.WriteLine($"The value is: {number} ");
         }
-        catch (FormatException exception) // Need to change this exception type.
+        catch (FormatException exception)  // Need to change this exception type.
         {
-            throw new ArgumentException(
-                message:"Input is not a valid integer.", 
-                paramName:nameof(input),
-                innerException: exception);
+            throw new ArgumentException(message: "Input is not a valid integer.",
+                                        paramName: nameof(input), innerException: exception);
         }
-
 
         return number;
     }

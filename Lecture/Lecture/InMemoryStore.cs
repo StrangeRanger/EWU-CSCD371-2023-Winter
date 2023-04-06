@@ -1,24 +1,25 @@
 ﻿namespace Lecture
 {
-    public class InMemoryStore : IStore
+public class InMemoryStore : IStore
+{
+    public void Save(ISavable item)
     {
-        public void Save(ISavable item)
-        {
-            Item = item??throw new ArgumentNullException(nameof(item));
-        }
+        Item = item ?? throw new ArgumentNullException(nameof(item));
+    }
 
-        public ISavable? Item { get; private set; }
-    }
-    public class DiskStore : IStore
+    public ISavable? Item { get; private set; }
+}
+
+public class DiskStore : IStore
+{
+    public void Save(ISavable item)
     {
-        public void Save(ISavable item)
+        if (item is null)
         {
-            if (item is null)
-            {
-                throw new ArgumentNullException(nameof(item));
-            }
-            // Save item to disk.
-            // item.ToText() => disk;
+            throw new ArgumentNullException(nameof(item));
         }
+        // Save item to disk.
+        // item.ToText() => disk;
     }
+}
 }

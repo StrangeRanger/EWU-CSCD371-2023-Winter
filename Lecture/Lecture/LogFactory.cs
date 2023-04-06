@@ -8,28 +8,25 @@ public class LogFactory
     {
         switch ((FilePath, className))
         {
-            case (not null, "FileLogger"):
-                FileLogger fileLogger = new(className, FilePath);
-                return fileLogger;
-            case (null, _):
-                throw new InvalidOperationException(
-                    $"{nameof(FilePath)} is not set.");
-            case (_, null):
-                throw new InvalidOperationException(
-                    $"{nameof(FilePath)} is not set.");
-            default:
-                throw new InvalidOperationException(
-                    "nameof(className)} is unknown.");
+        case (not null, "FileLogger"):
+            FileLogger fileLogger = new(className, FilePath);
+            return fileLogger;
+        case (null, _):
+            throw new InvalidOperationException($"{nameof(FilePath)} is not set.");
+        case (_, null):
+            throw new InvalidOperationException($"{nameof(FilePath)} is not set.");
+        default:
+            throw new InvalidOperationException("nameof(className)} is unknown.");
         }
-        //if (FilePath is null)
+        // if (FilePath is null)
         //{
-        //    return null;
-        //}
-        //switch (className)
+        //     return null;
+        // }
+        // switch (className)
         //{
-        //    case "FileLogger":
-        //        FileLogger fileLogger = new(className, FilePath);
-        //        return fileLogger;
+        //     case "FileLogger":
+        //         FileLogger fileLogger = new(className, FilePath);
+        //         return fileLogger;
 
         //    default:
         //        return null!;
@@ -42,4 +39,3 @@ public class LogFactory
         FilePath = loggerPath;
     }
 }
-
