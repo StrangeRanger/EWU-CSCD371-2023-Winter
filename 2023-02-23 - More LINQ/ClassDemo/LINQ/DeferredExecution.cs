@@ -1,4 +1,5 @@
 ﻿namespace Week_07_LINQ;
+
 [TestClass]
 public class DeferredExecution
 {
@@ -10,19 +11,19 @@ public class DeferredExecution
 
         Assert.AreEqual<int>(10, numbers.Count);
         IEnumerable<int> evens = numbers.Where(item =>
-        {
-            count++;
-            return item % 2 == 0;
-        });
+                                               {
+                                                   count++;
+                                                   return item % 2 == 0;
+                                               });
         List<int> evens2 = evens.ToList();
         Assert.AreEqual<int>(10, count);
         Assert.AreEqual<int>(5, evens2.Count());
         Assert.AreEqual<int>(10, count);
         IEnumerable<int> triples = evens2.Where(item =>
-        {
-            count++;
-            return item % 3 == 0;
-        }); // returns the query, not the results
+                                                {
+                                                    count++;
+                                                    return item % 3 == 0;
+                                                });  // returns the query, not the results
         Assert.AreEqual<int>(1, triples.Count());
 
         Assert.AreEqual<int>(15, count);
@@ -36,8 +37,7 @@ public class DeferredExecution
             Console.WriteLine(item);
         }
         Assert.AreEqual<int>(35, count);
-        
-        // Look at Enumerable class and linq methods *** 
-        
+
+        // Look at Enumerable class and linq methods ***
     }
 }

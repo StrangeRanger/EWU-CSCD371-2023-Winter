@@ -5,7 +5,6 @@ namespace Logger.Tests;
 [TestClass]
 public class FileLoggerTests : FileLoggerTestsBase
 {
-
     [TestMethod]
     public void Create_GivenClassAndValidFileName_Success()
     {
@@ -20,10 +19,10 @@ public class FileLoggerTests : FileLoggerTestsBase
         Logger.Log(LogLevel.Error, "Message2");
 
         string[] lines = await File.ReadAllLinesAsync(FilePath);
-        Assert.IsTrue(lines is [..] and { Length: 2 });
+        Assert.IsTrue(lines is[..] and { Length : 2 });
         foreach (string[] line in lines.Select(line => line.Split(',', 4)))
         {
-            if (line is [string dateTime, string source, string levelText, string message])
+            if (line is[string dateTime, string source, string levelText, string message])
             {
                 Assert.IsTrue(DateTime.TryParse(dateTime, out _));
                 Assert.AreEqual(nameof(FileLoggerTests), source);

@@ -1,12 +1,13 @@
 ﻿using System.Reflection.Metadata.Ecma335;
 
 namespace LambdaExpressions;
+
 public record FullName(string FirstName, string LastName)
 {
-    public FullName(string fullName): this(null!, null!)
+    public FullName(string fullName) : this(null!, null!)
     {
-
-        if (fullName.Split(" ") is [string { Length: >0 } firstName, string { Length: >0 } lastName])
+        if (fullName.Split(" ")
+                is[string { Length : > 0 } firstName, string { Length : > 0 } lastName])
         {
             FirstName = firstName;
             LastName = lastName;
@@ -19,19 +20,16 @@ public record FullName(string FirstName, string LastName)
     //      Using multiple list patterns
     //      User recursion pattern matching
 
-
-    public string Initials 
-    { 
-        get
-        {
-            
+    public string Initials
+    {
+        get {
             string result;
             result = $"{FirstName[0]}{LastName[0]}";
-            if ((FirstName.First(), LastName.First()) is (char firstInitial, char secondInitial))
+            if ((FirstName.First(), LastName.First())is(char firstInitial, char secondInitial))
                 result = new string(new char[] { firstInitial, secondInitial });
-            int[] numbers = new int[] { };
+            int[] numbers = new int[] {};
             List<double> doubleNumbers = null;
-            if (Name.Split(" ") is [[char firstIntial,.. ], [char lastIntial, ..]])
+            if (Name.Split(" ") is[[char firstIntial, ..], [char lastIntial, ..]])
             {
                 result = $"{firstInitial}{lastIntial}";
             }

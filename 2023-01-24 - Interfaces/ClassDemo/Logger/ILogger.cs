@@ -3,7 +3,7 @@
 public interface ILogger
 {
     int MaxMessageLength { get; set; }
-    
+
     void Log(LogLevel logLevel, string message);
 
     void Write(LogLevel logLevel, string message)

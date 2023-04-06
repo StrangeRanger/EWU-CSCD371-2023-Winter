@@ -9,9 +9,9 @@ public class GenericsTests
     public void CreateNullableObject_Success()
     {
         CustomObject number = new("text");
-        _  = (int)number.Value;
-    }    
-    
+        _ = (int)number.Value;
+    }
+
     [TestMethod]
     public void CreateNullableInt_Success()
     {
@@ -28,21 +28,17 @@ public class GenericsTests
 
         Assert.IsTrue(nullableNumber.HasValue);
         AreEqual(5, integer);
-
     }
 
     public static void AreEqual<T>(T expected, T actual)
     {
         Assert.AreEqual(expected, actual);
     }
-    
-    
+
     [TestMethod]
     public void Create_Object_Success()
     {
         // TypeParameter can't be a reference type.
         // CustomNullable<object> thing = new(1);
-
     }
-
 }

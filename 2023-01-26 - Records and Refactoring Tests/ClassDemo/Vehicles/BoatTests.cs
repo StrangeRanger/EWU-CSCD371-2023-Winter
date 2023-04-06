@@ -16,7 +16,6 @@ public class BoatTests
         Boat boat = new(Guid.NewGuid(), 3);
         Boat boat1 = new(Guid.NewGuid(), 3);
         Assert.AreNotEqual<Boat>(boat, boat1);
-        
     }
 
     [TestMethod]
@@ -26,6 +25,5 @@ public class BoatTests
         Boat boat = new(guid, 3);
         Boat boat1 = new(guid, 3);
         Assert.AreNotEqual<Boat>(boat, boat1);
-
     }
 }

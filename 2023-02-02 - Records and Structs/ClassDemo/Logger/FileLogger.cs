@@ -5,7 +5,7 @@ public class FileLogger : BaseLogger
     public FileLogger(string logSource, string filePath)
     {
         LogSource = logSource;
-        FilePath=filePath;
+        FilePath = filePath;
         File = new FileInfo(FilePath);
     }
 

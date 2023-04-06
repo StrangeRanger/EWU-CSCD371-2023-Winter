@@ -16,9 +16,7 @@ public class LogFactoryTests : FileLoggerTestsBase
     [TestMethod]
     public void ConfigureFileLogger_GivenFilePath_ReturnsFileLoggerWithSetFilePath()
     {
-        //LogFactory<FileLogger, FileLoggerFactory> logFactory = new();
-        //TestLogger logger = logFactory.CreateLogger(nameof(LogFactoryTests));
+        // LogFactory<FileLogger, FileLoggerFactory> logFactory = new();
+        // TestLogger logger = logFactory.CreateLogger(nameof(LogFactoryTests));
     }
 }
-
-

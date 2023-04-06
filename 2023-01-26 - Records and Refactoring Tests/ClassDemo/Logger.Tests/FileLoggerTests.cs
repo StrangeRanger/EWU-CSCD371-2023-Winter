@@ -9,6 +9,7 @@ public class FileLoggerTests : FileLoggerTestsBase
     public void TestSetup(TestContext testContext)
     {
     }
+
     // FileLogger? Logger { get; set; }
 
     [TestInitialize]
@@ -25,8 +26,6 @@ public class FileLoggerTests : FileLoggerTestsBase
         // Do something here
     }
 
-
-
     [TestMethod]
     public void Create_Success()
     {
@@ -36,18 +35,18 @@ public class FileLoggerTests : FileLoggerTestsBase
     [TestMethod]
     public void Create_Success1()
     {
-         Logger?.Log(LogLevel.Warning, "Hi@! My name is ...");
+        Logger?.Log(LogLevel.Warning, "Hi@! My name is ...");
     }
-    
+
     //[TestMethod]
-    //public void Create_GivenClassAndValidFileName_Success()b
+    // public void Create_GivenClassAndValidFileName_Success()b
     //{
     //    Assert.AreEqual(nameof(FileLoggerTests), Logger.LogSource);
     //    Assert.AreEqual(FilePath, Logger.FilePath);
     //}
 
     //[TestMethod]
-    //public async Task Log_Message_FileAppended()
+    // public async Task Log_Message_FileAppended()
     //{
     //    Logger.Log(LogLevel.Error, "Message1");
     //    Logger.Log(LogLevel.Error, "Message2");

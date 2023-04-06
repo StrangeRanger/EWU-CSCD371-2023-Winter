@@ -1,4 +1,5 @@
 ﻿namespace Logger;
+
 public struct NullableInt
 {
     public NullableInt(int value)
@@ -6,6 +7,7 @@ public struct NullableInt
         Value = value;
         HasValue = true;
     }
+
     public int Value { get; set; }
     public bool HasValue { get; }
 }
@@ -16,13 +18,16 @@ public struct NullableDouble
     public bool HasValue { get; }
 }
 
-public struct CustomNullable<TValueType> where TValueType : struct
+public struct CustomNullable<TValueType>
+
+    where TValueType : struct
 {
     public CustomNullable(TValueType value)
     {
         Value = value;
         HasValue = true;
     }
+
     public TValueType Value { get; set; }
     public bool HasValue { get; }
 }
@@ -33,5 +38,6 @@ public struct CustomObject
     {
         Value = value;
     }
+
     public object Value { get; set; }
 }

@@ -14,7 +14,7 @@ public class BaseLoggerMixinsTests
         // Arrange
 
         // Act
-        //BaseLoggerMixins.Error(null, "");
+        // BaseLoggerMixins.Error(null, "");
 
         // Assert
     }
@@ -26,7 +26,7 @@ public class BaseLoggerMixinsTests
         var logger = new TestLogger();
 
         // Act
-        //logger.Error("Message {0}", 42);
+        // logger.Error("Message {0}", 42);
 
         // Assert
         Assert.AreEqual(1, logger.LoggedMessages.Count);
@@ -44,12 +44,13 @@ public class BaseLoggerMixinsTests
         // Assert
         Assert.AreEqual(42, logger.MaxMessageLength);
     }
-
 }
 
 public class TestLogger : ILogger
 {
-    public List<(LogLevel LogLevel, string Message)> LoggedMessages { get; } = new List<(LogLevel, string)>();
+    public List<(LogLevel LogLevel, string Message)> LoggedMessages {
+        get;
+    } = new List<(LogLevel, string)>();
     public int MaxMessageLength { get; set; }
 
     public static ILogger CreateLogger()
@@ -62,4 +63,3 @@ public class TestLogger : ILogger
         LoggedMessages.Add((logLevel, message));
     }
 }
-

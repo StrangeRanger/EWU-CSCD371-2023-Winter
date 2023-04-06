@@ -27,7 +27,7 @@ public class LoggerTests
     public void Create_FileLogger()
     {
         // Pending configuration
-        //ILogger logger =
+        // ILogger logger =
         //    new LogFactory<FileLogger, FileLoggerFactory>().CreateLogger(nameof(FileLoggerTests));
     }
 }

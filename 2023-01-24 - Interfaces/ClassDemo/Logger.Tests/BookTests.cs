@@ -2,14 +2,13 @@
 
 namespace Logger.Tests;
 
-
 [TestClass]
 public class BookTests
 {
     [TestMethod]
     public void Create_Book_Success()
     {
-        Book book = new ("The Purple Crayon", "", "");
+        Book book = new("The Purple Crayon", "", "");
 
         Assert.AreEqual("The Purple Crayon", book.Title);
     }

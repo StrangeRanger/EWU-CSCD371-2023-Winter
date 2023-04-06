@@ -1,10 +1,9 @@
 ﻿namespace Logger.Tests;
+
 public static class ApplicationLogFactory
 {
     public static LogFactory<TestLogger, TestLoggerFactory> LogFactory { get; } = new();
-
 }
-
 
 public class MyType
 {

@@ -5,7 +5,7 @@ public class FileLogger : BaseLogger
     public FileLogger(string logSource, string filePath)
     {
         LogSource = logSource;
-        FilePath=filePath;
+        FilePath = filePath;
         File = new FileInfo(FilePath);
     }
 
@@ -14,9 +14,8 @@ public class FileLogger : BaseLogger
 
     FileInfo File { get; }
 
-    public static FileLogger CreateLogger(string logSource, string filePath) =>
-        new FileLogger(logSource, filePath);
-
+    public static FileLogger CreateLogger(string logSource,
+                                          string filePath) => new FileLogger(logSource, filePath);
 
     public override void Log(LogLevel logLevel, string message)
     {

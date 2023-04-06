@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -32,7 +32,6 @@ public class MyTestClass
     }
 }
 
-
 public class TestConsole : ILogger
 {
     public int MaxMessageLength { get; set; }
@@ -47,7 +46,6 @@ public class TestConsole : ILogger
 
     void ILogger.Log(LogLevel logLevel, string message)
     {
-        Console.WriteLine($"[{logLevel}]: {message}");;
+        Console.WriteLine($"[{logLevel}]: {message}");
     }
 }
-

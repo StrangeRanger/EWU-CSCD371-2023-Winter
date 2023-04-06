@@ -4,9 +4,12 @@ public class TestLogger : BaseLogger, ILogger<TestLogger>
 {
     public TestLogger(string logSource)
     {
-        LogSource=logSource;
+        LogSource = logSource;
     }
-    public List<(LogLevel LogLevel, string Message)> LoggedMessages { get; } = new List<(LogLevel, string)>();
+
+    public List<(LogLevel LogLevel, string Message)> LoggedMessages {
+        get;
+    } = new List<(LogLevel, string)>();
 
     public override string LogSource { get; }
 
@@ -24,6 +27,4 @@ public class TestLogger : BaseLogger, ILogger<TestLogger>
     {
         LoggedMessages.Add((logLevel, message));
     }
-
-
 }

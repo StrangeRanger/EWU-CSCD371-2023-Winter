@@ -5,14 +5,13 @@ namespace LambdaExpressions;
 [TestClass]
 public class PatternMatchingTests
 {
-    
     [TestMethod]
     public void SetName_InigoMontoya_Success()
     {
         FullName testName = new FullName("Inigo Montoya");
         (string FirstName, string LastName) actual1 = (testName.FirstName, testName.LastName);
         var actual = (testName.FirstName, testName.LastName);
-        Assert.AreEqual<(string, string)>(("Inigo","Montoya"), actual);
+        Assert.AreEqual<(string, string)>(("Inigo", "Montoya"), actual);
         Assert.IsTrue(testName.FirstName is "Inigo");
     }
 
@@ -35,9 +34,8 @@ public class PatternMatchingTests
     public void MyTestMethod()
     {
         FullName name = new FullName("Inigo Montoya");
-        _ = name switch
-        {
-            (string { Length: >0 and < 10 }, string { Length: >0 and < 10 }) => true,
+        _ = name switch {
+            (string { Length : > 0 and < 10 }, string { Length : > 0 and < 10 }) => true,
         };
     }
 
@@ -45,18 +43,16 @@ public class PatternMatchingTests
     public void LINQ_Where()
     {
         string name = "Inigo Montoya";
-        IEnumerable<char> oCharacters = name.Where(c => 
-            c == 'o');
+        IEnumerable<char> oCharacters = name.Where(c => c == 'o');
 
         int count = 0;
         List<int> indiciesWitho = name.Where(c =>
-        {
-            count++;
-            return c=='o';
-        }).Select(c =>
-            count++).ToList();
-        Assert.IsTrue(indiciesWitho is [4, 7, 10]);
+                                             {
+                                                 count++;
+                                                 return c == 'o';
+                                             })
+                                      .Select(c => count++)
+                                      .ToList();
+        Assert.IsTrue(indiciesWitho is[4, 7, 10]);
     }
-
-    
 }

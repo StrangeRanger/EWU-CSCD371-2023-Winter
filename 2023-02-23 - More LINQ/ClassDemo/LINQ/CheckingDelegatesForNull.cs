@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Week_07_LINQ;
+
 [TestClass]
 public class CheckingDelegatesForNull
 {
@@ -9,7 +10,7 @@ public class CheckingDelegatesForNull
     public void Null_Delegate_Checking()
     {
         bool isInvoked = false;
-        Action action = new Action(() =>isInvoked = true);
+        Action action = new Action(() => isInvoked = true);
         action();
         Assert.IsTrue(isInvoked);
     }
@@ -24,24 +25,25 @@ public class CheckingDelegatesForNull
         }
 
         Action action = new Action(SetInvoked);
-        //action();
+        // action();
         SetInvoked();
         Assert.IsTrue(isInvoked);
     }
 
     public Action? Action { get; set; } = null;
-    
+
     [TestMethod]
     public void Null_Delegate_CheckingInlineFunction()
     {
         bool isInvoked = false;
-        Action = () => { isInvoked = true; };
-        
+        Action = () =>
+        { isInvoked = true; };
+
         Action?.Invoke();
 
         // /Equivalent
-        //Action? temp = Action;
-        //if (temp != null)
+        // Action? temp = Action;
+        // if (temp != null)
         //{
         //    temp.Invoke();
         //}

@@ -1,15 +1,20 @@
 ﻿namespace Logger.Tests;
 
-public class TestLogger : BaseLogger, ILogger, ILogger<TestLogger>, ILogger<TestLogger, TestLoggerFactory>
+public class TestLogger : BaseLogger,
+                          ILogger,
+                          ILogger<TestLogger>,
+                          ILogger<TestLogger, TestLoggerFactory>
 {
     public TestLogger(string logSource)
     {
-        LogSource=logSource;
+        LogSource = logSource;
     }
-    public List<(LogLevel LogLevel, string Message)> LoggedMessages { get; } = new List<(LogLevel, string)>();
+
+    public List<(LogLevel LogLevel, string Message)> LoggedMessages {
+        get;
+    } = new List<(LogLevel, string)>();
 
     public override string LogSource { get; }
-    
 
     public TestLogger? Next { get; set; }
 
@@ -23,6 +28,4 @@ public class TestLogger : BaseLogger, ILogger, ILogger<TestLogger>, ILogger<Test
         LoggedMessages.Add((logLevel, message));
         Next?.Log(logLevel, message);
     }
-
-
 }

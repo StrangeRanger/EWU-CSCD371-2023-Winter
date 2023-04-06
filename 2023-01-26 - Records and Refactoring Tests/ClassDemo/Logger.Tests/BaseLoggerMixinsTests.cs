@@ -28,19 +28,20 @@ public class BaseLoggerMixinsTests
         Assert.AreEqual(LogLevel.Error, logger.LoggedMessages[0].LogLevel);
         Assert.AreEqual("Message 42", logger.LoggedMessages[0].Message);
     }
-
 }
 
 public class TestLogger : BaseLogger
 {
     public TestLogger(string logSource)
     {
-        LogSource=logSource;
+        LogSource = logSource;
     }
-    public List<(LogLevel LogLevel, string Message)> LoggedMessages { get; } = new List<(LogLevel, string)>();
+
+    public List<(LogLevel LogLevel, string Message)> LoggedMessages {
+        get;
+    } = new List<(LogLevel, string)>();
 
     public override string LogSource { get; }
-
 
     public override void Log(LogLevel logLevel, string message)
     {

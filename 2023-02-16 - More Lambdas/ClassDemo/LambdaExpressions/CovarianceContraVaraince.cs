@@ -8,7 +8,5 @@ public class CovarianceContraVaraince
     public void CoVariance()
     {
         // Jobs@IntelliTect.com
-
-
     }
 }

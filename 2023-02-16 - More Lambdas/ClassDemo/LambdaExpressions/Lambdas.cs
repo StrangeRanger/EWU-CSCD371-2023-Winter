@@ -16,12 +16,10 @@ public class Lambdas
         return a.CompareTo(b) > 0;
     }
 
-    public string[] Sort(Func<string,string, bool> greaterThan, string[] items )
+    public string[] Sort(Func<string, string, bool> greaterThan, string[] items)
     {
         return null;
     }
-
-
 
     [TestMethod]
     public void Sort_AB_Sucess()
@@ -76,10 +74,9 @@ public class Lambdas
         // Foreach(DoSomethingInt, items);
     }
 
-    
     object GetThing(string thing) => thing;
     string? GetText(object text) => text.ToString();
-    
+
     string? Calculate(Func<object, string?> getData) => getData(null!);
 
     [TestMethod]
@@ -87,10 +84,7 @@ public class Lambdas
     {
         Func<object, string?> func;
         func = GetText;
-            
     }
-
-    
 
     [TestMethod]
     [ExpectedException(typeof(Exception))]
@@ -98,13 +92,10 @@ public class Lambdas
     {
         try
         {
-
         }
         catch (Exception)
         {
-
             throw;
         }
-        
     }
 }

@@ -8,15 +8,14 @@ public class LazyTests
     public void InvokeLazy()
     {
         string text = "Very hard thing to create";
-        Lazy<string> textFactory = new(
-            () => text
-            );
+        Lazy<string> textFactory = new(() => text);
         Assert.AreEqual(text, textFactory.Value);
     }
-    
+
     int NonNullableNumber;
-    
+
     int? NullableNumber;
+
     [TestMethod]
     public void NullableDefaultsTo()
     {
