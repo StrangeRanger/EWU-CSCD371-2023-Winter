@@ -11,7 +11,7 @@ public class NodeTest
     [TestMethod]
     public void Node_Constructor_NullValue_ThrowsArgumentNullException()
     {
-        _ = new Node<string>(null !);
+        _ = new Node<string>(null!);
     }
 
     [TestMethod]

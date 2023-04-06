@@ -9,9 +9,9 @@ namespace Assignment.Tests;
 [TestClass]
 public class SampleDataTest
 {
-    #pragma warning disable CS8618
+#pragma warning disable CS8618
     private SampleData sampleData { get; set; }
-    #pragma warning restore CS8618
+#pragma warning restore CS8618
 
     [TestInitialize]
     public void TestInitialize()
@@ -23,7 +23,7 @@ public class SampleDataTest
     [TestCleanup]
     public void TestCleanup()
     {
-        sampleData = null !;
+        sampleData = null!;
     }
 
     [TestMethod]
@@ -49,10 +49,9 @@ public class SampleDataTest
     public void SampleData_GetUniqueSortedListOfStatesGivenCsvRows_AreEqualIsTrue()
     {
         string actual = string.Join(", ", sampleData.GetUniqueSortedListOfStatesGivenCsvRows());
-        string expected = string.Join(", ", sampleData.CsvRows
-                                                      .Select(line => line.Split(',')[6])
-                                                      .Distinct()
-                                                      .OrderBy(state => state));
+        string expected = string.Join(", ", sampleData.CsvRows.Select(line => line.Split(',')[6])
+                                                .Distinct()
+                                                .OrderBy(state => state));
 
         Assert.AreEqual<string>(expected, actual);
     }
@@ -60,8 +59,8 @@ public class SampleDataTest
     [TestMethod]
     public void SampleData_FirstRowOfCsvRowsIsOmitted_IsTrue()
     {
-        Assert.IsFalse(sampleData.CsvRows.ElementAt(0)
-                       .Contains("Id,FirstName,LastName,Email,StreetAddress,City,State,Zip"));
+        Assert.IsFalse(sampleData.CsvRows.ElementAt(0).Contains(
+            "Id,FirstName,LastName,Email,StreetAddress,City,State,Zip"));
     }
 
     [TestMethod]
@@ -82,7 +81,7 @@ public class SampleDataTest
 
         Assert.AreEqual<string>(expected, actual);
     }
-    
+
     [TestMethod]
     public void FilterByEmailAddress_AreEqualIsTrue()
     {
